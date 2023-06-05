@@ -41,12 +41,7 @@ class _UnLockCountState extends State<UnLockCount> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Screen On: $_screenOnCount',
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Screen Off: $_screenOffCount',
+                '잠금화면 횟수: $_screenOnCount',
                 style: TextStyle(fontSize: 20),
               ),
             ],
