@@ -6,12 +6,14 @@ import 'package:screen_state/screen_state.dart';
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
 class UnLockCount extends StatefulWidget {
+  const UnLockCount({super.key});
+
   @override
   _UnLockCountState createState() => _UnLockCountState();
 }
 
 class _UnLockCountState extends State<UnLockCount> {
-  Screen _screen = Screen();
+  final Screen _screen = Screen();
   int _screenOnCount = 0;
   int _screenOffCount = 0;
 
@@ -42,7 +44,7 @@ class _UnLockCountState extends State<UnLockCount> {
             children: [
               Text(
                 '잠금화면 횟수: $_screenOnCount',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
             ],
           ),
@@ -53,16 +55,14 @@ class _UnLockCountState extends State<UnLockCount> {
 }
 
 class Screen {
-  EventChannel _eventChannel = const EventChannel('screenStateEvents');
+  final EventChannel _eventChannel = const EventChannel('screenStateEvents');
   Stream<ScreenStateEvent>? _screenStateStream;
 
   Stream<ScreenStateEvent>? get screenStateStream {
     if (Platform.isAndroid) {
-      if (_screenStateStream == null) {
-        _screenStateStream = _eventChannel
-            .receiveBroadcastStream()
-            .map((event) => _parseScreenStateEvent(event));
-      }
+      _screenStateStream ??= _eventChannel
+          .receiveBroadcastStream()
+          .map((event) => _parseScreenStateEvent(event));
       return _screenStateStream;
     }
     throw ScreenStateException('Exception');
