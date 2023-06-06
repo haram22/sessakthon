@@ -5,7 +5,7 @@ TextStyle title1({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 18.sp : 18,
       fontWeight: FontWeight.bold,
-      fontFamily: 'Main',
+      fontFamily: 'gmarket',
       color: color);
 }
 
@@ -28,7 +28,7 @@ TextStyle title2({bool responsible = false, Color? color}) {
 TextStyle subtitle2({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Main',
       color: color);
 }
