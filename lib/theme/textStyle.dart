@@ -37,6 +37,6 @@ TextStyle button({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 16.sp : 16,
       fontWeight: FontWeight.bold,
-      fontFamily: 'pretendart',
+      fontFamily: 'gmarket',
       color: color);
 }
