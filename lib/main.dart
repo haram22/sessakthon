@@ -2,6 +2,13 @@ import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pj1/View/home/homeView.dart';
 import 'package:pj1/theme/colors.dart';
+import 'package:screen_state/screen_state.dart';
+
+import 'Controller/unLockCount.dart';
+import 'View/home/homeView.dart';
+
+enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
+
 
 void main() {
   runApp(MyApp());
