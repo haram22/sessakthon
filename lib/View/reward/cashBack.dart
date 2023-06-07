@@ -49,7 +49,7 @@ class CashBack extends StatelessWidget {
               "잔여 포인트 : 0",
               style: subtitle1(color: gray_300),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
