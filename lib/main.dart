@@ -1,8 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:pj1/theme/colors.dart';
 import 'package:screen_state/screen_state.dart';
+
 import 'Controller/unLockCount.dart';
 import 'View/home/homeView.dart';
 
@@ -28,4 +29,5 @@ class MyApp extends StatelessWidget {
       home: bottomNavi(),
     );
   }
+
 }
