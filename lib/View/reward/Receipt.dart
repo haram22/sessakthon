@@ -16,8 +16,10 @@ class _ReceiptCheckState extends State<ReceiptCheck> {
       backgroundColor: mainColor_black,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back_rounded),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
         ),
         centerTitle: true,
         title: Text("영수증 인증", style: landingTitle()),
@@ -31,6 +33,10 @@ class _ReceiptCheckState extends State<ReceiptCheck> {
         ),
         SizedBox(height: 49),
         Image.asset('assets/receiptImg.png', width: 169),
+        SizedBox(height: 36),
+        TextButton(
+            onPressed: () {}, child: Image.asset('assets/addReceipt.png')),
+        SizedBox(height: 57),
         Padding(
           padding: EdgeInsets.only(left: 30, right: 30),
           child: _button(),
@@ -43,7 +49,7 @@ class _ReceiptCheckState extends State<ReceiptCheck> {
     return ElevatedButton(
       onPressed: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ReceiptCheck()));
+            context, MaterialPageRoute(builder: (context) => cameraReceipt()));
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: mainColor_green,
@@ -89,4 +95,77 @@ Widget _textSection() {
       )
     ],
   );
+}
+
+class cameraReceipt extends StatefulWidget {
+  const cameraReceipt({super.key});
+
+  @override
+  State<cameraReceipt> createState() => _cameraReceiptState();
+}
+
+class _cameraReceiptState extends State<cameraReceipt> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: mainColor_black,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: mainColor_black,
+          ),
+        ),
+        centerTitle: true,
+        title: Text("영수증 인증", style: landingTitle(color: mainColor_black)),
+        backgroundColor: Color.fromRGBO(50, 205, 109, 0.44),
+        elevation: 0,
+      ),
+      body: Column(children: [
+        Image.asset(
+          'assets/line.png',
+          width: double.infinity,
+          fit: BoxFit.fill,
+        ),
+        Stack(
+          children: [
+            Image.asset(
+              'assets/gradation.png',
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: 25.0),
+                child: Text(
+                  "영수증의 종량제 구매 정보를 읽어오는 중입니다.",
+                  style: landingTitle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Image.asset('assets/cameraReceipt.png'),
+        SizedBox(height: 47),
+        Image.asset(
+          'assets/line.png',
+          width: double.infinity,
+          fit: BoxFit.fill,
+        ),
+        Container(
+            width: double.infinity,
+            height: 60,
+            color: Color.fromRGBO(50, 205, 109, 0.44)),
+        // Image.asset(
+        //   'assets/gradationRect.png',
+        //   width: double.infinity,
+        //   height: 10,
+        //   fit: BoxFit.fill,
+        // ),
+      ]),
+    );
+  }
 }

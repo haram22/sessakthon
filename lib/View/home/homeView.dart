@@ -167,6 +167,12 @@ class _HomeViewState extends State<HomeView> {
             child: _contentsCircle(),
           ),
         ),
+        Padding(
+            padding: EdgeInsets.only(top: 10.0),
+            child: Image.asset(
+              'assets/homeTooltip.png',
+              width: 120,
+            ))
       ],
     );
   }
