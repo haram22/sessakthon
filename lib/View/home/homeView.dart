@@ -3,10 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:pj1/View/challenge/challengeView.dart';
 import 'package:pj1/View/reward/dashBoard.dart';
 import 'package:pj1/theme/colors.dart';
-import 'package:pj1/theme/textStyle.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
-
-import '../reward/dashBoard.dart';
 
 class bottomNavi extends StatefulWidget {
   const bottomNavi({super.key});
@@ -171,6 +168,12 @@ class _HomeViewState extends State<HomeView> {
             child: _contentsCircle(),
           ),
         ),
+        Padding(
+            padding: EdgeInsets.only(top: 10.0),
+            child: Image.asset(
+              'assets/homeTooltip.png',
+              width: 120,
+            ))
       ],
     );
   }

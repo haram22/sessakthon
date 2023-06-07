@@ -13,7 +13,7 @@ TextStyle subtitle1({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.normal,
-      fontFamily: 'pretendart',
+      fontFamily: 'pretendard',
       color: color);
 }
 
@@ -21,7 +21,7 @@ TextStyle title2({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.bold,
-      fontFamily: 'pretendart',
+      fontFamily: 'pretendard',
       color: color);
 }
 
@@ -29,7 +29,7 @@ TextStyle subtitle2({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.w500,
-      fontFamily: 'pretendart',
+      fontFamily: 'pretendard',
       color: color);
 }
 
@@ -38,5 +38,13 @@ TextStyle button({bool responsible = false, Color? color}) {
       fontSize: responsible ? 16.sp : 16,
       fontWeight: FontWeight.bold,
       fontFamily: 'gmarket',
+      color: color);
+}
+
+TextStyle landingTitle({bool responsible = false, Color? color}) {
+  return TextStyle(
+      fontSize: responsible ? 14.sp : 14,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'pretendart',
       color: color);
 }

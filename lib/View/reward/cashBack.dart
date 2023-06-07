@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pj1/View/reward/Receipt.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 
@@ -51,7 +52,10 @@ class CashBack extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReceiptCheck()));
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: mainColor_green,
                 shape: RoundedRectangleBorder(

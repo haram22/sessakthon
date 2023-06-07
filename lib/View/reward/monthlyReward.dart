@@ -26,7 +26,7 @@ class MonthlyReward extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
           Column(
             children: [
               Text(
