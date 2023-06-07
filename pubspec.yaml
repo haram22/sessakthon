@@ -75,6 +75,7 @@ flutter:
     - assets/
     - assets/bottomIcon/
     - assets/collection/
+    - assets/challenge/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
