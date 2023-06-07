@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// class challengeComp1{
+//   final String imgPath;
+//   final String org;
+//   final String title;
+//   final String dsc;
+
+//   challengeComp1(this.imgPath,this.org,)
+// }
 class ChallengeComp extends StatelessWidget {
   final List<Map<String, dynamic>> gridMap = [
     {
