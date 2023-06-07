@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pj1/View/reward/dashBoard.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
@@ -24,7 +25,7 @@ class _bottomNaviState extends State<bottomNavi> {
     HomeView(),
     DashBoardPage(),
     HomeView(),
-    HomeView()
+    DashBoardPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,9 +36,9 @@ class _bottomNaviState extends State<bottomNavi> {
         decoration:
             BoxDecoration(border: Border.all(color: Colors.black, width: 0.2)),
         child: BottomNavigationBar(
-            backgroundColor: Color(0xff242424),
+            backgroundColor: const Color(0xff242424),
             type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Color(0xff747474),
+            unselectedItemColor: const Color(0xff747474),
             elevation: 5,
             currentIndex: _selectedIndex,
             selectedFontSize: 12,
@@ -48,14 +49,14 @@ class _bottomNaviState extends State<bottomNavi> {
               });
             },
             iconSize: 28,
-            items: [
-              const BottomNavigationBarItem(
+            items: const [
+              BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 3.0, top: 10),
                     child: ImageIcon(AssetImage('assets/bottomIcon/Home.png')),
                   ),
                   label: '홈'),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                   icon: SizedBox(
                     width: 30,
                     child: Padding(
@@ -64,7 +65,7 @@ class _bottomNaviState extends State<bottomNavi> {
                             AssetImage('assets/bottomIcon/unCollection.png'))),
                   ),
                   label: '도감'),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                   icon: SizedBox(
                     width: 40,
                     child: Padding(
@@ -74,7 +75,7 @@ class _bottomNaviState extends State<bottomNavi> {
                     ),
                   ),
                   label: '챌린지'),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 3.0, top: 10),
                     child:
@@ -103,7 +104,7 @@ class _HomeViewState extends State<HomeView> {
       body: Column(children: [
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Padding(
@@ -115,13 +116,13 @@ class _HomeViewState extends State<HomeView> {
             ),
           ],
         ),
-        SizedBox(height: 42),
+        const SizedBox(height: 42),
         TextSection(),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
         CircleProgress(),
-        SizedBox(height: 45),
+        const SizedBox(height: 45),
         Padding(
-          padding: EdgeInsets.only(left: 30.0, right: 22),
+          padding: const EdgeInsets.only(left: 30.0, right: 22),
           child: _HomeCollection(),
         )
       ]),
@@ -129,7 +130,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget TextSection() {
-    return Column(
+    return const Column(
       children: [
         Text(
           "밀어서 분리배출",
@@ -164,7 +165,7 @@ class _HomeViewState extends State<HomeView> {
           child: CircleProgressBar(
             strokeWidth: 14,
             foregroundColor: mainColor_green,
-            backgroundColor: Color(0xff1E1E1E),
+            backgroundColor: const Color(0xff1E1E1E),
             value: -0.7,
             child: _contentsCircle(),
           ),
@@ -188,7 +189,7 @@ class _HomeViewState extends State<HomeView> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           const Text(
             '오늘의 포인트',
             style: TextStyle(
@@ -197,8 +198,8 @@ class _HomeViewState extends State<HomeView> {
                 color: Colors.white,
                 fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 6),
-          Text(
+          const SizedBox(height: 6),
+          const Text(
             "150P",
             style: TextStyle(
                 color: mainColor_green,
@@ -206,7 +207,7 @@ class _HomeViewState extends State<HomeView> {
                 fontWeight: FontWeight.bold,
                 fontFamily: 'gmarket'),
           ),
-          SizedBox(height: 19),
+          const SizedBox(height: 19),
           SizedBox(
             height: 24,
             child: OutlinedButton(
@@ -214,10 +215,10 @@ class _HomeViewState extends State<HomeView> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10), // 모서리 반경 설정
                 ),
-                side: BorderSide(color: Color(0xff545454)), // 아웃라인 색상 설정
+                side: const BorderSide(color: Color(0xff545454)), // 아웃라인 색상 설정
               ),
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 "더보기  >",
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
@@ -238,7 +239,7 @@ class _HomeViewState extends State<HomeView> {
       child: Column(children: [
         Row(
           children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -262,10 +263,10 @@ class _HomeViewState extends State<HomeView> {
                 )
               ],
             ),
-            Spacer(),
+            const Spacer(),
             OutlinedButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   "전체보기 >",
                   style: TextStyle(
                       color: mainColor_green,
@@ -278,9 +279,9 @@ class _HomeViewState extends State<HomeView> {
         Row(
           children: [
             _collectionPreview('햇반용기', 'assets/collection/collection1.png'),
-            SizedBox(width: 25),
+            const SizedBox(width: 25),
             _collectionPreview('햇반용기', 'assets/collection/collection2.png'),
-            SizedBox(width: 25),
+            const SizedBox(width: 25),
             _collectionPreview('햇반용기', 'assets/collection/collection3.png')
           ],
         )
@@ -300,15 +301,15 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget _collectionPreview(String collection_label, String imagePath) {
+  Widget _collectionPreview(String collectionLabel, String imagePath) {
     return Column(
       children: [
-        SizedBox(height: 17),
+        const SizedBox(height: 17),
         Image.asset(imagePath),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
-          collection_label,
-          style: TextStyle(
+          collectionLabel,
+          style: const TextStyle(
               color: Color(0xffB1B1B1),
               fontFamily: 'gmarket',
               fontSize: 12,
