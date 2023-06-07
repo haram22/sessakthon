@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:screen_state/screen_state.dart';
 import 'Controller/unLockCount.dart';
 
 // splash
@@ -11,6 +9,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(UnLockCount());
+    runApp(
+      const MaterialApp(home: UnLockCount()),
+    );
   });
 }
