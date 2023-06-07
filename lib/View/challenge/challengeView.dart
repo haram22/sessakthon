@@ -47,7 +47,7 @@ class _challengeViewState extends State<challengeView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                           challengeComp()
+                           ChallengeComp()
                           ]
                         ),
                       ),
@@ -86,10 +86,9 @@ class _challengeViewState extends State<challengeView> {
           });
         },
         child: Center(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              width: 80,
+          child: Container(
+            width: 80,
+            child: Center(
               child: Text(
                 text,
                 style: TextStyle(
@@ -99,6 +98,7 @@ class _challengeViewState extends State<challengeView> {
               ),
             ),
           ),
+        
         ),
       ),
     );
