@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pj1/View/reward/cashBack.dart';
 import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
@@ -98,7 +99,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      ModalBottomSheetRoute(
+                        builder: (context) => const CashBack(),
+                        isScrollControlled: false,
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColor_green,
                       shape: RoundedRectangleBorder(
