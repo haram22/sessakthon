@@ -13,7 +13,7 @@ TextStyle subtitle1({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.normal,
-      fontFamily: 'Main',
+      fontFamily: 'pretendart',
       color: color);
 }
 
@@ -21,7 +21,7 @@ TextStyle title2({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.bold,
-      fontFamily: 'Main',
+      fontFamily: 'pretendart',
       color: color);
 }
 
@@ -29,7 +29,7 @@ TextStyle subtitle2({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.w500,
-      fontFamily: 'Main',
+      fontFamily: 'pretendart',
       color: color);
 }
 
@@ -37,6 +37,6 @@ TextStyle button({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 16.sp : 16,
       fontWeight: FontWeight.bold,
-      fontFamily: 'Main',
+      fontFamily: 'pretendart',
       color: color);
 }
