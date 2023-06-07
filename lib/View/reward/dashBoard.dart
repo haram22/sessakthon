@@ -13,8 +13,6 @@ class DashBoardPage extends StatefulWidget {
 class _DashBoardPageState extends State<DashBoardPage> {
   @override
   Widget build(BuildContext context) {
-    bool trigger = false;
-
     return Scaffold(
       backgroundColor: mainColor_black,
       appBar: AppBar(
@@ -27,6 +25,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Text(
@@ -37,7 +36,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
             ),
             const SizedBox(height: 20),
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: navigation_background,
@@ -62,7 +61,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("내 계좌"),
+                            Text(
+                              "내 계좌",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Main',
+                              ),
+                            ),
                             Icon(Icons.keyboard_arrow_right_rounded),
                           ],
                         ),
@@ -94,51 +99,84 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   const SizedBox(height: 32),
                   ElevatedButton(
                     onPressed: () {},
-                    onHover: (bool isHovered) {
-                      if (isHovered) {
-                        // 버튼에 마우스가 hover되었을 때 수행할 동작
-                        setState(() {
-                          trigger = true;
-                        });
-                      } else {
-                        // 버튼에서 마우스 hover가 해제되었을 때 수행할 동작
-                        setState(() {
-                          trigger = false;
-                        });
-                      }
-                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColor_green,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    child: Tooltip(
-                      message: "10포인트 = 1원",
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 13),
-                            child: Text(
-                              "캐시백 받기",
-                              style: button(color: mainColor_black),
-                            ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 13),
+                          child: Text(
+                            "캐시백 받기",
+                            style: button(color: mainColor_black),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 9),
-                  Text(
-                    "* 캐시백은 10,000포인트 이상 보유 시 가능합니다.",
-                    style: subtitle1(color: gray_300),
+                  const Text(
+                    "* 캐시백은 10,000포인트(=1,000원) 이상 보유 시 가능합니다.",
+                    style: TextStyle(
+                      color: gray_300,
+                      fontSize: 11,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Main',
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 22),
+            const SizedBox(height: 32),
+            Center(
+              child: IconButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  ModalBottomSheetRoute(
+                    builder: (context) => const EntireMonthlyReward(),
+                    isScrollControlled: true,
+                    useSafeArea: true,
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.keyboard_arrow_up_rounded,
+                  color: gray_300,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
             const MonthlyReward(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ChatBubble extends StatelessWidget {
+  final String message;
+
+  const ChatBubble({super.key, required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: gray_600,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        message,
+        style: const TextStyle(
+          fontSize: 10,
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+          fontFamily: "gmarket",
         ),
       ),
     );
