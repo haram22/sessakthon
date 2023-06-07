@@ -4,6 +4,8 @@ import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 
+import '../reward/dashBoard.dart';
+
 class bottomNavi extends StatefulWidget {
   const bottomNavi({super.key});
   @override
@@ -20,7 +22,7 @@ class _bottomNaviState extends State<bottomNavi> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeView(),
-    HomeView(),
+    DashBoardPage(),
     HomeView(),
     HomeView()
   ];
