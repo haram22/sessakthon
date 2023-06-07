@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pj1/View/reward/dashBoard.dart';
 import 'package:screen_state/screen_state.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
@@ -33,21 +34,29 @@ class _UnLockCountState extends State<UnLockCount> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('UnLock Count'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '잠금화면 횟수: $_screenOnCount',
-                style: const TextStyle(fontSize: 20),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('UnLock Count'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '잠금화면 횟수: $_screenOnCount',
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DashBoardPage(),
+                ),
               ),
-            ],
-          ),
+              child: const Text("환전소"),
+            ),
+          ],
         ),
       ),
     );

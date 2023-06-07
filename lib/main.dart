@@ -8,6 +8,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(UnLockCount());
+    runApp(
+      const MaterialApp(home: UnLockCount()),
+    );
   });
 }

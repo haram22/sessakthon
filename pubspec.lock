@@ -10,7 +10,7 @@ packages:
     source: hosted
     version: "2.11.0"
   async_wallpaper:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: async_wallpaper
       sha256: d4cf1fff78cf91982b447c82ab5248a7921996b95a43772a6fc7c971bd976ded
@@ -58,7 +58,7 @@ packages:
     source: hosted
     version: "3.0.3"
   cupertino_icons:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: cupertino_icons
       sha256: e35129dc44c9118cee2a5603506d823bab99c68393879edb440e0090d07586be
@@ -95,7 +95,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_cache_manager:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_cache_manager
       sha256: "32cd900555219333326a2d0653aaaf8671264c29befa65bbd9856d204a4c9fb3"
