@@ -268,7 +268,12 @@ class _HomeViewState extends State<HomeView> {
             ),
             const Spacer(),
             OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CollectionPage()));
+                },
                 child: const Text(
                   "전체보기 >",
                   style: TextStyle(
@@ -288,18 +293,6 @@ class _HomeViewState extends State<HomeView> {
             _collectionPreview('햇반용기', 'assets/collection/collection3.png')
           ],
         )
-        // Row(
-        //   children: [
-        //     Column(
-        //       children: [
-        //         Image.asset('assets/collection/collection1.png'),
-        //         Text(collection_label)
-        //       ],
-        //     ),
-        //     Image.asset('assets/collection/collection2.png'),
-        //     Image.asset('assets/collection/collection3.png')
-        //   ],
-        // )
       ]),
     );
   }
