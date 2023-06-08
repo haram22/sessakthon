@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pj1/View/challenge/challengeView.dart';
+import 'package:pj1/View/collection/collectionComp.dart';
 import 'package:pj1/View/reward/dashBoard.dart';
+import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 
+import '../collection/collectionComp.dart';
+
 class bottomNavi extends StatefulWidget {
-  const bottomNavi({super.key});
+  int? selectedIndex;
+  String? sendCash;
+  bottomNavi({super.key, this.selectedIndex, this.sendCash});
   @override
   State<bottomNavi> createState() => _bottomNaviState();
 }
 
 class _bottomNaviState extends State<bottomNavi> {
+  late String _sendCash = "18,980";
   int _selectedIndex = 0;
   late List<bool> ispress;
   bool ispress1 = true;
@@ -19,16 +25,33 @@ class _bottomNaviState extends State<bottomNavi> {
   bool ispress3 = true;
   bool ispress4 = true;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeView(),
-    DashBoardPage(),
-    challengeView(),
-    DashBoardPage()
-  ];
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedIndex != null) {
+      _selectedIndex = widget.selectedIndex!;
+      _sendCash = widget.sendCash!;
+    }
+  }
+
+  // static final List<Widget> _widgetOptions = <Widget>[
+  //   HomeView(),
+  //   CollectionPage(),
+  //   challengeView(),
+  //   DashBoardPage(cashPoint: _sendCash)
+  // ];
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> _widgetOptions = <Widget>[
+      HomeView(),
+      CollectionPage(),
+      challengeView(),
+      DashBoardPage(cashPoint: _sendCash)
+    ];
+
     return Scaffold(
-      backgroundColor: Colors.red,
+      // backgroundColor: Colors.red,
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: Container(
         decoration:
@@ -169,7 +192,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         Padding(
-            padding: EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: Image.asset(
               'assets/homeTooltip.png',
               width: 120,
@@ -221,7 +244,10 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 side: const BorderSide(color: Color(0xff545454)), // 아웃라인 색상 설정
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DashBoardPage()));
+              },
               child: const Text(
                 "더보기  >",
                 style: TextStyle(
@@ -269,7 +295,12 @@ class _HomeViewState extends State<HomeView> {
             ),
             const Spacer(),
             OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CollectionPage()));
+                },
                 child: const Text(
                   "전체보기 >",
                   style: TextStyle(
@@ -289,18 +320,6 @@ class _HomeViewState extends State<HomeView> {
             _collectionPreview('햇반용기', 'assets/collection/collection3.png')
           ],
         )
-        // Row(
-        //   children: [
-        //     Column(
-        //       children: [
-        //         Image.asset('assets/collection/collection1.png'),
-        //         Text(collection_label)
-        //       ],
-        //     ),
-        //     Image.asset('assets/collection/collection2.png'),
-        //     Image.asset('assets/collection/collection3.png')
-        //   ],
-        // )
       ]),
     );
   }

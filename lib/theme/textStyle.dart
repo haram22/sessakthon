@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 TextStyle title1({bool responsible = false, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 18.sp : 18,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
       fontFamily: 'gmarket',
       color: color);
 }
@@ -46,5 +46,6 @@ TextStyle landingTitle({bool responsible = false, Color? color}) {
       fontSize: responsible ? 14.sp : 14,
       fontWeight: FontWeight.w400,
       fontFamily: 'pretendart',
+      height: 1.5,
       color: color);
 }
