@@ -9,12 +9,21 @@ import 'package:circle_progress_bar/circle_progress_bar.dart';
 import '../collection/collectionComp.dart';
 
 class bottomNavi extends StatefulWidget {
-  const bottomNavi({super.key});
+  int? selectedIndex;
+  bottomNavi({super.key, this.selectedIndex});
   @override
   State<bottomNavi> createState() => _bottomNaviState();
 }
 
 class _bottomNaviState extends State<bottomNavi> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedIndex != null) {
+      _selectedIndex = widget.selectedIndex!;
+    }
+  }
+
   int _selectedIndex = 0;
   late List<bool> ispress;
   bool ispress1 = true;
@@ -28,6 +37,7 @@ class _bottomNaviState extends State<bottomNavi> {
     challengeView(),
     DashBoardPage()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

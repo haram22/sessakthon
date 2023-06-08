@@ -28,6 +28,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 20),
             Center(
               child: Text(
                 "환경실천으로 얻은 포인트로 종량제 봉투를 구입해보세요!\n종량제 봉투를 구입한 후 영수증을 인증하면\n보유 포인트만큼 캐시백해드려요!",

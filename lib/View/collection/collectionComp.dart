@@ -69,12 +69,22 @@ class _CollectionPageState extends State<CollectionPage> {
         foregroundColor: mainColor_white,
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
+              leading: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
               backgroundColor: mainColor_black,
               expandedHeight: 200,
               centerTitle: true,
@@ -94,6 +104,7 @@ class _CollectionPageState extends State<CollectionPage> {
                       style: TextStyle(
                         fontFamily: 'gmarket',
                         fontSize: 12,
+                        height: 1.3,
                         fontWeight: FontWeight.normal,
                         color: gray_300,
                       ),
