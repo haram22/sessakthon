@@ -51,7 +51,7 @@ class _UnLockCountState extends State<UnLockCount> {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DashBoardPage(),
+                  builder: (context) => DashBoardPage(),
                 ),
               ),
               child: const Text("환전소"),

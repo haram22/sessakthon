@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pj1/View/collection/collectionComp.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
+import 'collectionComp.dart';
 
 void showAlertDialog(BuildContext context, CollectionItem item) {
   showDialog(
