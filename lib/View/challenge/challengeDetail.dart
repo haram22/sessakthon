@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../theme/colors.dart';
 import '../../theme/textStyle.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class challengeDetail extends StatelessWidget {
   final Map<String, dynamic> challengeInfo;
@@ -11,6 +12,43 @@ class challengeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+          height: 80,
+          decoration: BoxDecoration(color: Color(0xff242424)),
+          child: Row(
+            children: [
+              SizedBox(width: 30),
+              Text(
+                challengeInfo['date'],
+                style: TextStyle(
+                    fontSize: 13,
+                    color: mainColor_green,
+                    fontFamily: 'gmarket',
+                    height: 1.5,
+                    fontWeight: FontWeight.normal),
+              ),
+              Spacer(),
+              Container(
+                decoration: BoxDecoration(
+                    color: mainColor_green,
+                    borderRadius: BorderRadius.circular(10)),
+                width: 188,
+                height: 50,
+                child: OutlinedButton(
+                  child: Text(
+                    "참여하기",
+                    style: button(color: mainColor_black),
+                  ),
+                  onPressed: () async {
+                    launchUrl(
+                      Uri.parse(challengeInfo['url']),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(width: 30)
+            ],
+          )),
       backgroundColor: mainColor_black,
       body: SingleChildScrollView(
         child: Column(
@@ -40,7 +78,11 @@ class challengeDetail extends StatelessWidget {
             SizedBox(height: 32),
             Image.asset('assets/challengeDetail/grayLine.png',
                 width: double.infinity, fit: BoxFit.fill),
-            reviewData()
+            reviewData(),
+            Image.asset('assets/challengeDetail/grayLine.png',
+                width: double.infinity, fit: BoxFit.fill),
+            SizedBox(height: 33),
+            lastTextSection()
           ],
         ),
       ),
@@ -243,6 +285,100 @@ class challengeDetail extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget lastTextSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _textSectionStyle("이런 분들에게 추천합니다", challengeInfo['recomand']),
+        _textSectionStyle("챌린지 내용", challengeInfo['contents']),
+        _textSectionStyle("포인트 안내", challengeInfo['point']),
+        SizedBox(height: 22),
+        Padding(
+          padding: const EdgeInsets.only(left: 32.0),
+          child: Text(
+            "이렇게 인증해주세요!",
+            style: title1(color: mainColor_green),
+          ),
+        ),
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 30.0, top: 15, bottom: 16, right: 30),
+          child: Container(
+            height: 53,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Color(0xff242424),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text(
+                challengeInfo['prove'],
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30.0, right: 30),
+            child: Row(
+              children: [
+                _proveCard(0),
+                SizedBox(width: 8),
+                _proveCard(1),
+                SizedBox(width: 8),
+                _proveCard(2),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 40)
+      ],
+    );
+  }
+
+  Widget _textSectionStyle(String title, String contents) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, right: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: title1(color: mainColor_green),
+          ),
+          SizedBox(height: 13),
+          Text(
+            contents,
+            style: landingTitle(color: mainColor_white),
+          ),
+          SizedBox(height: 56),
+        ],
+      ),
+    );
+  }
+
+  Widget _proveCard(int index) {
+    int imgIndex = index + 1;
+    return Column(
+      children: [
+        Image.asset('assets/challengeDetail/prove$imgIndex.png'),
+        SizedBox(height: 5),
+        Container(
+            width: 160,
+            height: 38,
+            child: Text(
+              challengeInfo['proveContents'][index]['1'],
+              style: TextStyle(
+                  fontFamily: 'pretendard',
+                  fontSize: 12,
+                  fontWeight: FontWeight.normal),
+            ))
+      ],
     );
   }
 }
