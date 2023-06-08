@@ -38,6 +38,7 @@ class _ChallengeCompState extends State<ChallengeComp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   if (map.containsKey('image'))
                     ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -54,6 +55,7 @@ class _ChallengeCompState extends State<ChallengeComp> {
                             height: 140,
                             fit: BoxFit.cover,
                           ),
+
                           Padding(
                             padding: EdgeInsets.only(left: 110.0, top: 10),
                             child: Container(
