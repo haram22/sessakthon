@@ -51,7 +51,7 @@ class _bottomNaviState extends State<bottomNavi> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.red,
+      // backgroundColor: Colors.red,
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: Container(
         decoration:
@@ -99,7 +99,8 @@ class _bottomNaviState extends State<bottomNavi> {
               BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 3.0, top: 10),
-                    child: ImageIcon(AssetImage('assets/bottomIcon/last.png')),
+                    child:
+                        ImageIcon(AssetImage('assets/bottomIcon/reward.png')),
                   ),
                   label: '환전소'),
             ],
