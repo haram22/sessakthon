@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
-class challengeComp extends StatefulWidget {
-  const challengeComp({super.key});
+// class challengeComp1{
+//   final String imgPath;
+//   final String org;
+//   final String title;
+//   final String dsc;
 
-  @override
-  State<challengeComp> createState() => _challengeCompState();
-}
-
-class _challengeCompState extends State<challengeComp> {
+//   challengeComp1(this.imgPath,this.org,)
+// }
+class ChallengeComp extends StatelessWidget {
   final List<Map<String, dynamic>> gridMap = [
     {
       "title": "Hi",
-      "image": AssetImage('assets/challenge/challenge.png'),
+      "image": 'assets/challenge/challengeComp1.png',
     },
-    {"title": "H2i"},
+    {
+      "title": "H2i",
+    },
     {
       "title": "H3i",
     },
@@ -37,6 +40,7 @@ class _challengeCompState extends State<challengeComp> {
     },
   ];
 
+  @override
   Widget build(BuildContext context) {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
@@ -48,22 +52,39 @@ class _challengeCompState extends State<challengeComp> {
         mainAxisExtent: 190,
       ),
       itemBuilder: (_, index) {
+        final map = gridMap[index];
         return Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              color: Color.fromARGB(255, 205, 174, 171)),
-          child: Column(children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0)),
-              child: Image.network(
-                "${gridMap.elementAt(index)['images']}",
-                height: 60,
-                fit: BoxFit.cover,
-              ),
-            )
-          ]),
+            borderRadius: BorderRadius.circular(12.0),
+            color: Color.fromARGB(255, 205, 174, 171),
+          ),
+          child: Column(
+            children: [
+              if (map.containsKey('image'))
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16.0),
+                    topRight: Radius.circular(16.0),
+                  ),
+                  child: Image.asset(
+                    map['image'],
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              if (map.containsKey('title'))
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    map['title'],
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         );
       },
       itemCount: gridMap.length,
