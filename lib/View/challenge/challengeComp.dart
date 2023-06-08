@@ -46,11 +46,43 @@ class _ChallengeCompState extends State<ChallengeComp> {
                         bottomRight: Radius.circular(16.0),
                         bottomLeft: Radius.circular(16.0),
                       ),
-                      child: Image.asset(
-                        map['image'],
-                        width: double.infinity,
-                        height: 140,
-                        fit: BoxFit.cover,
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            map['image'],
+                            width: double.infinity,
+                            height: 140,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 110.0, top: 10),
+                            child: Container(
+                              width: 46,
+                              height: 16,
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(5, 5, 5, 0.74),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Row(children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 2.0),
+                                  child: Image.asset(
+                                      'assets/challenge/profilIcon.png'),
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  map['participants'] + "명",
+                                  style: TextStyle(
+                                      fontFamily: 'gmarket',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 8),
+                                )
+                              ]),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   SizedBox(
