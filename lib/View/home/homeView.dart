@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pj1/View/challenge/challengeView.dart';
+import 'package:pj1/View/collection/collectionComp.dart';
 import 'package:pj1/View/reward/dashBoard.dart';
 import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
@@ -182,7 +182,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         Padding(
-            padding: EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: Image.asset(
               'assets/homeTooltip.png',
               width: 120,
