@@ -97,18 +97,32 @@ void showAlertDialog(BuildContext context, CollectionItem item) {
           ),
         ),
         actions: [
-          ElevatedButton(
-            onPressed: item.isCollected ? () {} : null,
-            style: ElevatedButton.styleFrom(backgroundColor: mainColor_green),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "친구에게 공유하고 리워드 받기",
-                  style: button(color: mainColor_black),
+          Stack(
+            children: [
+              ElevatedButton(
+                onPressed: item.isCollected ? () {} : null,
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: mainColor_green),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "친구에게 공유하고 리워드 받기",
+                      style: button(color: mainColor_black),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              item.isCollected
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 35.0,
+                        left: 190,
+                      ),
+                      child: Image.asset('assets/tooltip.png'),
+                    )
+                  : const SizedBox.shrink(),
+            ],
           ),
         ],
       );

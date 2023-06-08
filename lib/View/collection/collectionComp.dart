@@ -67,6 +67,116 @@ class _CollectionPageState extends State<CollectionPage> {
         isCollected: false,
         color: const Color(0xFF242424),
         tier: "Hard"),
+    // ================== 구분선 ===================
+    CollectionItem(
+        image: "assets/collection/unknown1.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Easy"),
+    CollectionItem(
+        image: "assets/collection/vinyl.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Easy"),
+    CollectionItem(
+        image: "assets/collection/cd.png",
+        name: "CD",
+        isCollected: true,
+        color: const Color(0xFF6764FF),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/tint.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/unknown2.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/hanger.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/unknown1.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
+    CollectionItem(
+        image: "assets/collection/battery.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
+    CollectionItem(
+        image: "assets/collection/unknown2.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
+    // ================== 구분선 ===================
+    CollectionItem(
+        image: "assets/collection/unknown1.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Easy"),
+    CollectionItem(
+        image: "assets/collection/vinyl.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Easy"),
+    CollectionItem(
+        image: "assets/collection/battery.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/tint.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/unknown2.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/hanger.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Medium"),
+    CollectionItem(
+        image: "assets/collection/unknown1.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
+    CollectionItem(
+        image: "assets/collection/battery.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
+    CollectionItem(
+        image: "assets/collection/unknown2.png",
+        name: "???",
+        isCollected: false,
+        color: const Color(0xFF242424),
+        tier: "Hard"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -78,46 +188,43 @@ class _CollectionPageState extends State<CollectionPage> {
         foregroundColor: mainColor_white,
         elevation: 0,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+        leading: const SizedBox.shrink(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
-              leading: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.transparent,
-              ),
+              leading: const SizedBox.shrink(),
               backgroundColor: mainColor_black,
               expandedHeight: 200,
               centerTitle: true,
               flexibleSpace: FlexibleSpaceBar(
-                background: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                background: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 75),
-                    Text(
-                      '밀어서 분리수거',
-                      style: title1(color: mainColor_white),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 75),
+                        Text(
+                          '밀어서 분리수거',
+                          style: title1(color: mainColor_green),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "랜덤으로 나오는 분리수거 아이템을\n도감에 모아보세요!",
+                          style: TextStyle(
+                            fontFamily: 'gmarket',
+                            fontSize: 13,
+                            height: 1.3,
+                            fontWeight: FontWeight.w100,
+                            color: mainColor_green,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "랜덤으로 나오는 분리수거 아이템을\n도감에 모아보세요!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'gmarket',
-                        fontSize: 12,
-                        height: 1.3,
-                        fontWeight: FontWeight.normal,
-                        color: gray_300,
-                      ),
-                    ),
+                    Image.asset("assets/pet.png"),
                   ],
                 ),
               ),
@@ -141,7 +248,7 @@ class _CollectionPageState extends State<CollectionPage> {
                       children: [
                         Expanded(
                           child: Container(
-                            width: 92,
+                            width: 95,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: collection[index].color,
@@ -150,21 +257,27 @@ class _CollectionPageState extends State<CollectionPage> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          collection[index].name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: 'gmarket',
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                            color: gray_300,
-                          ),
-                        ),
+                        collection[index].name == "???"
+                            ? Image.asset(
+                                "assets/lock.png",
+                                color: gray_300,
+                                width: 8,
+                              )
+                            : Text(
+                                collection[index].name,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontFamily: 'gmarket',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  color: gray_300,
+                                ),
+                              ),
                       ],
                     ),
                   );
                 },
-                childCount: 9,
+                childCount: collection.length,
                 // 그리드에 표시될 총 항목 수를 지정합니다.
               ),
             ),
