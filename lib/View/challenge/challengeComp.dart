@@ -38,64 +38,55 @@ class _ChallengeCompState extends State<ChallengeComp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(
-                    children: [
-                      if (map.containsKey('image'))
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(16.0),
-                            topRight: Radius.circular(16.0),
-                            bottomRight: Radius.circular(16.0),
-                            bottomLeft: Radius.circular(16.0),
-                          ),
-                          child: Image.asset(
+
+                  if (map.containsKey('image'))
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(16.0),
+                        topRight: Radius.circular(16.0),
+                        bottomRight: Radius.circular(16.0),
+                        bottomLeft: Radius.circular(16.0),
+                      ),
+                      child: Stack(
+                        children: [
+                          Image.asset(
                             map['image'],
                             width: double.infinity,
                             height: 140,
                             fit: BoxFit.cover,
                           ),
-                        ),
-                        Positioned(
-                          top: 8,
-                          right: 8,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.7),
-                              borderRadius: BorderRadius.all(Radius.circular(5.0))
-                                
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 4.0,
-                              horizontal: 8.0,
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset("assets/challenge/Mask group.png"),
-                              //below makes controlable the image.
-                              //   Container(
-                              //   width: 12,
-                              //   height: 12,
-                              //   child: Image.asset(
-                              //     "assets/challenge/Mask group.png",
-                              //     color: Colors.white,
-                              //   ),
-                              // ),
-                                SizedBox(width: 8.0,height: 0.1,),
-                                Text(
-                                  map['participant'],
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 110.0, top: 10),
+                            child: Container(
+                              width: 46,
+                              height: 16,
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(5, 5, 5, 0.74),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Row(children: [
+                                SizedBox(
+                                  width: 5,
                                 ),
-                              ],
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 2.0),
+                                  child: Image.asset(
+                                      'assets/challenge/profilIcon.png'),
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  map['participants'] + "명",
+                                  style: TextStyle(
+                                      fontFamily: 'gmarket',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 8),
+                                )
+                              ]),
                             ),
                           )
-                        ),
-                    ],
-                  ),
-                  
+                        ],
+                      ),
+                    ),
                   SizedBox(
                     height: 8,
                   ),

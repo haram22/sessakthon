@@ -120,7 +120,7 @@ final List<Map<String, dynamic>> challengeData = [
     ///
     "backImg": "assets/challenge/challengeComp1.png",
     "kindofTrash": "용기 분리수거",
-    "participants": "320",
+    "participants": "420",
     "totalParticipants": "2040명",
     "starRate": "4.5",
     "recomand":
@@ -156,7 +156,7 @@ final List<Map<String, dynamic>> challengeData = [
     ///
     "backImg": "assets/challenge/challengeComp1.png",
     "kindofTrash": "용기 분리수거",
-    "participants": "320",
+    "participants": "120",
     "totalParticipants": "2040명",
     "starRate": "4.5",
     "recomand":
