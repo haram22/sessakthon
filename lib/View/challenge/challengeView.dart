@@ -12,61 +12,51 @@ class challengeView extends StatefulWidget {
 }
 
 class _challengeViewState extends State<challengeView> {
-
   int _selectedButtonIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
+    return Scaffold(
+      backgroundColor: mainColor_black,
+      appBar: AppBar(
+        title: const Text("챌린지"),
         backgroundColor: mainColor_black,
-        appBar: AppBar(
-          title: const Text("챌린지"),
-          backgroundColor: mainColor_black,
-          foregroundColor: mainColor_white,
-          elevation: 0,
-          centerTitle: true,
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 28),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildBoxTextButton("전체", 0),
-                        _buildBoxTextButton("참여중", 1),
-                        _buildBoxTextButton("참여 완료", 2),  
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 40,),
-                  Expanded(
-                    child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                           challengeComp()
-                          ]
-                        ),
-                      ),
-                  ),
-                  
-              
-         
-            
-          ],
-        ), 
-          
-      
-      
-      
+        foregroundColor: mainColor_white,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildBoxTextButton("전체", 0),
+                _buildBoxTextButton("참여중", 1),
+                _buildBoxTextButton("참여 완료", 2),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [challengeComp()]),
+            ),
+          ),
+        ],
+      ),
     );
-    
-    
   }
-  
+
   Widget _buildBoxTextButton(String text, int index) {
     final bool isSelected = _selectedButtonIndex == index;
 

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pj1/View/challenge/challengeView.dart';
 import 'package:pj1/View/reward/dashBoard.dart';
+import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
+
+import '../collection/collectionComp.dart';
 
 class bottomNavi extends StatefulWidget {
   const bottomNavi({super.key});
@@ -21,7 +24,7 @@ class _bottomNaviState extends State<bottomNavi> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeView(),
-    DashBoardPage(),
+    CollectionPage(),
     challengeView(),
     DashBoardPage()
   ];
@@ -221,7 +224,10 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 side: const BorderSide(color: Color(0xff545454)), // 아웃라인 색상 설정
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DashBoardPage()));
+              },
               child: const Text(
                 "더보기  >",
                 style: TextStyle(
