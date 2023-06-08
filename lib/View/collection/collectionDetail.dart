@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
-import 'collectionComp.dart';
+import '../../Model/collectionData.dart';
 
 void showAlertDialog(BuildContext context, CollectionItem item) {
   showDialog(
@@ -10,17 +10,16 @@ void showAlertDialog(BuildContext context, CollectionItem item) {
       return AlertDialog(
         backgroundColor: const Color(0xff242424),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
               child: const Icon(Icons.close_rounded),
               onTap: () => Navigator.pop(context),
             ),
+            const SizedBox(width: 95),
             Text(
               item.tier,
               style: title2(color: item.color),
             ),
-            const SizedBox.shrink(),
           ],
         ),
         content: SingleChildScrollView(
