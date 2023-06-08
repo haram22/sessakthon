@@ -225,26 +225,38 @@ class challengeDetail extends StatelessWidget {
           ),
         ),
         SizedBox(height: 21),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+        //////////////////////////////////////////////
+        Row(
+  mainAxisAlignment: MainAxisAlignment.end,
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    TextButton(
+      onPressed: () {},
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(width: 195), 
+          Text(
+            challengeInfo['reviewNum'] + "개 후기 모두 보기",
+            style: TextStyle(
+              color: mainColor_white,
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+              fontFamily: 'pretendard',
+            ),
           ),
-          width: 330,
-          height: 53,
-          child: OutlinedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(gray_300),
-              ),
-              onPressed: () {},
-              child: Text(
-                challengeInfo['reviewNum'] + "개 후기 모두 보기",
-                style: TextStyle(
-                    color: Color(0xff080808),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    fontFamily: 'gmarket'),
-              )),
-        ),
+          SizedBox(width: 8), // Adjust the spacing between the text and icon
+          Icon(
+            Icons.chevron_right,
+            color: Colors.white,
+          ),
+
+        ],
+      ),
+    ),
+  ],
+),
+//////////////////////////////////
         SizedBox(height: 33),
       ],
     );

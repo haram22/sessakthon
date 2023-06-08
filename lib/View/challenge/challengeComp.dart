@@ -38,21 +38,64 @@ class _ChallengeCompState extends State<ChallengeComp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (map.containsKey('image'))
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(16.0),
-                        topRight: Radius.circular(16.0),
-                        bottomRight: Radius.circular(16.0),
-                        bottomLeft: Radius.circular(16.0),
-                      ),
-                      child: Image.asset(
-                        map['image'],
-                        width: double.infinity,
-                        height: 140,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  Stack(
+                    children: [
+                      if (map.containsKey('image'))
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                            bottomRight: Radius.circular(16.0),
+                            bottomLeft: Radius.circular(16.0),
+                          ),
+                          child: Image.asset(
+                            map['image'],
+                            width: double.infinity,
+                            height: 140,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.7),
+                              borderRadius: BorderRadius.all(Radius.circular(5.0))
+                                
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 4.0,
+                              horizontal: 8.0,
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset("assets/challenge/Mask group.png"),
+                              //below makes controlable the image.
+                              //   Container(
+                              //   width: 12,
+                              //   height: 12,
+                              //   child: Image.asset(
+                              //     "assets/challenge/Mask group.png",
+                              //     color: Colors.white,
+                              //   ),
+                              // ),
+                                SizedBox(width: 8.0,height: 0.1,),
+                                Text(
+                                  map['participant'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ),
+                    ],
+                  ),
+                  
                   SizedBox(
                     height: 8,
                   ),

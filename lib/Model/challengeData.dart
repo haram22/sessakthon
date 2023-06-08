@@ -7,6 +7,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "햇반X오지지",
     "desription": "오늘부터 시작",
     "length": "2주동안",
+    "participant" : "322",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -42,6 +43,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "한국야쿠르트x오지지",
     "desription": "어제부터 시작",
     "length": "2주동안",
+    "participant" : "19",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -77,6 +79,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "닥터지x오지지",
     "desription": "6/1부터 시작",
     "length": "4주동안",
+    "participant" : "312",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -112,6 +115,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "글라스락x오지지",
     "desription": "내일부터 시작",
     "length": "3주동안",
+    "participant" : "122",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -147,6 +151,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "바나나맛우유x오지지",
     "desription": "오늘부터 시작",
     "length": "1주동안",
+    "participant" : "55",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -182,6 +187,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "포카리스웨트x오지지",
     "desription": "7/1부터 시작",
     "length": "5주동안",
+    "participant" : "7",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
