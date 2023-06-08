@@ -5,7 +5,7 @@ import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 
 class DashBoardPage extends StatefulWidget {
-  final String? cashPoint;
+  String? cashPoint;
   final Key? key;
   DashBoardPage({this.key, this.cashPoint});
 
@@ -108,32 +108,56 @@ class _DashBoardPageState extends State<DashBoardPage> {
                     "지금까지 받은 캐시백: 5번, 누적 5000포인트",
                     style: title2(color: gray_300),
                   ),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      ModalBottomSheetRoute(
-                        builder: (context) => const CashBack(),
-                        isScrollControlled: false,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: mainColor_green,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 13),
-                          child: Text(
-                            "캐시백 받기",
-                            style: button(color: mainColor_black),
+                  // const SizedBox(height: 32),
+                  Stack(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: 32),
+                          ElevatedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              ModalBottomSheetRoute(
+                                builder: (context) => const CashBack(),
+                                isScrollControlled: false,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: mainColor_green,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 13),
+                                  child: Text(
+                                    "캐시백 받기",
+                                    style: button(color: mainColor_black),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(width: 10),
+                          Column(
+                            children: [
+                              SizedBox(height: 10),
+                              Image.asset(
+                                'assets/collection/tooltip.png',
+                                width: 100,
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                   const SizedBox(height: 9),
                   const Text(
