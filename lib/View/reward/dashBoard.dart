@@ -5,7 +5,9 @@ import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 
 class DashBoardPage extends StatefulWidget {
-  const DashBoardPage({super.key});
+  final String? cashPoint;
+  final Key? key;
+  DashBoardPage({this.key, this.cashPoint});
 
   @override
   State<DashBoardPage> createState() => _DashBoardPageState();
@@ -13,6 +15,14 @@ class DashBoardPage extends StatefulWidget {
 
 class _DashBoardPageState extends State<DashBoardPage> {
   @override
+  String _cashPoint = "";
+  void initState() {
+    super.initState();
+    if (widget.cashPoint != null) {
+      _cashPoint = widget.cashPoint!;
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColor_black,
@@ -76,14 +86,14 @@ class _DashBoardPageState extends State<DashBoardPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 22),
+                  SizedBox(height: 22),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("assets/point.png"),
-                      const SizedBox(width: 8),
-                      const Text(
-                        "18,980",
+                      SizedBox(width: 8),
+                      Text(
+                        _cashPoint,
                         style: TextStyle(
                           color: mainColor_green,
                           fontSize: 40,

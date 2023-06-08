@@ -10,20 +10,14 @@ import '../collection/collectionComp.dart';
 
 class bottomNavi extends StatefulWidget {
   int? selectedIndex;
-  bottomNavi({super.key, this.selectedIndex});
+  String? sendCash;
+  bottomNavi({super.key, this.selectedIndex, this.sendCash});
   @override
   State<bottomNavi> createState() => _bottomNaviState();
 }
 
 class _bottomNaviState extends State<bottomNavi> {
-  @override
-  void initState() {
-    super.initState();
-    if (widget.selectedIndex != null) {
-      _selectedIndex = widget.selectedIndex!;
-    }
-  }
-
+  late String _sendCash = "18,980";
   int _selectedIndex = 0;
   late List<bool> ispress;
   bool ispress1 = true;
@@ -31,15 +25,31 @@ class _bottomNaviState extends State<bottomNavi> {
   bool ispress3 = true;
   bool ispress4 = true;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeView(),
-    CollectionPage(),
-    challengeView(),
-    DashBoardPage()
-  ];
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedIndex != null) {
+      _selectedIndex = widget.selectedIndex!;
+      _sendCash = widget.sendCash!;
+    }
+  }
+
+  // static final List<Widget> _widgetOptions = <Widget>[
+  //   HomeView(),
+  //   CollectionPage(),
+  //   challengeView(),
+  //   DashBoardPage(cashPoint: _sendCash)
+  // ];
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _widgetOptions = <Widget>[
+      HomeView(),
+      CollectionPage(),
+      challengeView(),
+      DashBoardPage(cashPoint: _sendCash)
+    ];
+
     return Scaffold(
       backgroundColor: Colors.red,
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
@@ -89,8 +99,7 @@ class _bottomNaviState extends State<bottomNavi> {
               BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 3.0, top: 10),
-                    child:
-                        ImageIcon(AssetImage('assets/bottomIcon/reward.png')),
+                    child: ImageIcon(AssetImage('assets/bottomIcon/last.png')),
                   ),
                   label: '환전소'),
             ],

@@ -167,7 +167,10 @@ class _cameraReceiptState extends State<cameraReceipt> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => bottomNavi(selectedIndex: 3)));
+                    builder: (context) => bottomNavi(
+                          selectedIndex: 3,
+                          sendCash: "0",
+                        )));
             final snackBar = SnackBar(
               backgroundColor: gray_600,
               content: Row(
@@ -280,10 +283,7 @@ class _failPageState extends State<failPage> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
-            child: Text(
-              "다시 촬영하기",
-              style: button(color: mainColor_black),
-            ),
+            child: Text("다시 촬영하기", style: button(color: mainColor_black)),
           ),
         ],
       ),
