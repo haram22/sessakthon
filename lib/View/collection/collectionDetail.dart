@@ -1,31 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
+import 'package:video_player/video_player.dart';
 import '../../Model/collectionData.dart';
 
-void showAlertDialog(BuildContext context, CollectionItem item) {
+void showAlertDialog(BuildContext context, CollectionItem item,
+    VideoPlayerController controller) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: const Color(0xff242424),
-        title: Row(
-          children: [
-            GestureDetector(
-              child: const Icon(Icons.close_rounded),
-              onTap: () => Navigator.pop(context),
-            ),
-            const SizedBox(width: 95),
-            Text(
-              item.tier,
-              style: title2(color: item.color),
-            ),
-          ],
-        ),
+        contentPadding: EdgeInsets.zero,
         content: SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             children: [
+              Stack(
+                children: [
+                  AspectRatio(
+                    aspectRatio: controller.value.aspectRatio,
+                    child: VideoPlayer(controller),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                    ),
+                    child: GestureDetector(
+                      child: const Icon(Icons.close_rounded),
+                      onTap: () => Navigator.pop(context),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Text(
+                item.tier,
+                style: title2(color: item.color),
+              ),
               Image.asset(
                 item.image,
                 width: 200,
@@ -49,6 +61,7 @@ void showAlertDialog(BuildContext context, CollectionItem item) {
               const SizedBox(height: 60),
               const Row(
                 children: [
+                  SizedBox(width: 20),
                   Text(
                     "분리배출 방법",
                     textAlign: TextAlign.left,
@@ -72,6 +85,7 @@ void showAlertDialog(BuildContext context, CollectionItem item) {
                       children: [
                         const Row(
                           children: [
+                            SizedBox(width: 20),
                             Text(
                               "알아두면 좋은 점",
                               textAlign: TextAlign.left,
