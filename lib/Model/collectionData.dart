@@ -111,10 +111,10 @@ List<CollectionItem> collection = [
       color: const Color(0xFF242424),
       tier: "Medium"),
   CollectionItem(
-      image: "assets/collection/unknown1.png",
-      name: "???",
-      isCollected: false,
-      color: const Color(0xFF242424),
+      image: "assets/collection/lighter.png",
+      name: "라이터",
+      isCollected: true,
+      color: const Color(0xFFFF8328),
       tier: "Hard"),
   CollectionItem(
       image: "assets/collection/battery.png",
