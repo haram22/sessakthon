@@ -48,7 +48,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "랜덤으로 나오는 분리수거 아이템을\n도감에 모아보세요!",
+                          "랜덤으로 나오는 분리배출 아이템을\n도감에 모아보세요!",
                           style: TextStyle(
                             fontFamily: 'gmarket',
                             fontSize: 13,
