@@ -101,6 +101,18 @@ void showCelebrationDialog(BuildContext context, CollectionItem item) {
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 100.0,
+                top: 200,
+              ),
+              child: Transform.scale(
+                scale: 1.2,
+                child: Image.asset(
+                  "assets/pet2.png",
+                ),
+              ),
+            ),
           ],
         ),
         actions: [

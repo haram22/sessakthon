@@ -18,7 +18,7 @@ class _CollectionPageState extends State<CollectionPage> {
     return Scaffold(
       backgroundColor: mainColor_black,
       appBar: AppBar(
-        title: const Text("분리수거 도감"),
+        title: const Text("분리배출 도감"),
         backgroundColor: mainColor_black,
         foregroundColor: mainColor_white,
         elevation: 0,
@@ -43,7 +43,7 @@ class _CollectionPageState extends State<CollectionPage> {
                       children: [
                         const SizedBox(height: 75),
                         Text(
-                          '밀어서 분리수거',
+                          '밀어서 분리배출',
                           style: title1(color: mainColor_green),
                         ),
                         const SizedBox(height: 10),
