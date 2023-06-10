@@ -1,16 +1,25 @@
+import 'dart:async';
+
 import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pj1/View/home/homeView.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:screen_state/screen_state.dart';
+import 'package:flutter/services.dart';
 
 import 'Controller/unLockCount.dart';
 import 'View/home/homeView.dart';
+import 'View/home/initPopUp.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
+
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -51,6 +60,15 @@ class SplashScreenGame extends StatefulWidget {
 class _SplashScreenGameState extends State<SplashScreenGame> {
   late FlameSplashController controller;
 
+  void showInitAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return InitAlert();
+      },
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +81,13 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
             return Image.asset('assets/splashLogo.png', width: 128);
           },
         ),
-        onFinish: (context) => Navigator.pushReplacement<void, void>(
-          context,
-          MaterialPageRoute(builder: (context) => bottomNavi()),
-        ),
+        onFinish: (context) {
+          showInitAlertDialog(context);
+        },
+        // onFinish: (context) => Navigator.pushReplacement<void, void>(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => bottomNavi()),
+        // ),
       ),
     );
   }

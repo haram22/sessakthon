@@ -20,14 +20,12 @@ class _challengeViewState extends State<challengeView> {
     return Scaffold(
       backgroundColor: mainColor_black,
       appBar: AppBar(
-        title: Text(
-          "챌린지",
-          style: landingTitle(color: mainColor_white),
-        ),
+        title: const Text("챌린지"),
         backgroundColor: mainColor_black,
         foregroundColor: mainColor_white,
         elevation: 0,
         centerTitle: true,
+        leading: const SizedBox.shrink(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
