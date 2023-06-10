@@ -77,6 +77,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
       setState(() {
         showInitDialog = true;
       });
+      showInitAlertDialog(context);
     });
   }
 
@@ -103,7 +104,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
               // changeBackgroundColor();
             },
           ),
-          if (showInitDialog) bottomNavi(),
+          if (showInitDialog) InitAlert(),
         ],
       ),
     );
