@@ -90,11 +90,6 @@ class _CollectionPageState extends State<CollectionPage> {
                         ],
                       ),
                     ),
-
-                    Image.asset("assets/pet.png"),
-                  ],
-                ),
-              ),
               // 헤더의 높이나 다른 설정을 지정할 수 있습니다.
               // 필요에 따라 SliverAppBar을 조정하세요.
             ),
