@@ -15,12 +15,14 @@ class CollectionPage extends StatefulWidget {
   State<CollectionPage> createState() => _CollectionPageState();
 }
 
+bool isDialogShown = false;
+
 class _CollectionPageState extends State<CollectionPage> {
   late VideoPlayerController _controller;
+  // Flag to track if the dialog has been shown
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = VideoPlayerController.asset('assets/video/hetbahn.mp4');
 
@@ -31,10 +33,15 @@ class _CollectionPageState extends State<CollectionPage> {
     _controller.initialize().then((_) => setState(() {}));
     _controller.play();
 
-    if (isOpen) {
+    if (!isDialogShown) {
       WidgetsBinding.instance!.addPostFrameCallback((_) {
         showCelebrationDialog(context, collection[0]);
+        setState(() {
+          isDialogShown = true;
+        });
       });
+    } else {
+      print("Dialog already shown");
     }
   }
 
@@ -170,7 +177,12 @@ class _CollectionPageState extends State<CollectionPage> {
                 child: Container(
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setState(() {
+                        isDialogShown = true;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: mainColor_green),
                     child: Row(
