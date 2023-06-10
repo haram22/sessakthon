@@ -45,7 +45,7 @@ class _InitAlertState extends State<InitAlert> {
       result = 'Failed to get wallpaper.';
     }
     if (!mounted) return;
-
+    
     setState(() {
       _liveWallpaper = result;
     });
