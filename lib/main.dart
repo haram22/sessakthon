@@ -59,7 +59,8 @@ class SplashScreenGame extends StatefulWidget {
 
 class _SplashScreenGameState extends State<SplashScreenGame> {
   late FlameSplashController controller;
-
+  bool showInitDialog = false;  
+  
   void showInitAlertDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -69,25 +70,41 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
     );
   }
   
+  void initState() {
+    super.initState();
+    // Start a timer to simulate the splash screen duration
+    Timer(Duration(seconds: 3), () {
+      setState(() {
+        showInitDialog = true;
+      });
+    });
+  }
   @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlameSplashScreen(
-        theme: FlameSplashTheme(
-          backgroundDecoration: BoxDecoration(
-            color: mainColor_green,
+      body: Stack(
+        children: [
+          FlameSplashScreen(
+            theme: FlameSplashTheme(
+              backgroundDecoration: BoxDecoration(
+                color: showInitDialog ? mainColor_black : mainColor_green,
+              ),
+              logoBuilder: (BuildContext context) {
+                return Image.asset('assets/splashLogo.png', width: 128);
+              },
+            ),
+            onFinish: (context) {
+              setState(() {
+                showInitDialog = true;
+              });
+              // Optionally, you can call your own method here to change the background color
+              // after the splash screen finishes.
+              // changeBackgroundColor();
+            },
           ),
-          logoBuilder: (BuildContext context) {
-            return Image.asset('assets/splashLogo.png', width: 128);
-          },
-        ),
-        onFinish: (context) {
-          showInitAlertDialog(context);
-        },
-        // onFinish: (context) => Navigator.pushReplacement<void, void>(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => bottomNavi()),
-        // ),
+          if (showInitDialog) InitAlert(),
+        ],
       ),
     );
   }
