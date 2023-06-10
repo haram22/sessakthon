@@ -40,10 +40,11 @@ class _InitAlertState extends State<InitAlert> {
       result = 'Failed to get wallpaper.';
     }
     if (!mounted) return;
-
+    
     setState(() {
       _liveWallpaper = result;
     });
+    Navigator.of(context).pop(); // Pop the dialog
     Navigator.pushReplacement<void, void>(
       context,
       MaterialPageRoute(builder: (context) => bottomNavi()),
