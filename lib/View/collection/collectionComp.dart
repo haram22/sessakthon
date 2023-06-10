@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pj1/theme/textStyle.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../Model/collectionData.dart';
 import '../../theme/colors.dart';
@@ -15,6 +16,28 @@ class CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<CollectionPage> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/video/hetbahn.mp4');
+
+    _controller.addListener(() {
+      setState(() {});
+    });
+    _controller.setLooping(true);
+    _controller.initialize().then((_) => setState(() {}));
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,34 +90,56 @@ class _CollectionPageState extends State<CollectionPage> {
                         ],
                       ),
                     ),
-                    // 헤더의 높이나 다른 설정을 지정할 수 있습니다.
-                    // 필요에 따라 SliverAppBar을 조정하세요.
-                  ),
-                  SliverGrid(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 24,
-                      // 그리드의 각 열에 표시될 항목 수를 설정합니다.
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        // 그리드 항목을 생성하는 로직을 작성합니다.
-                        return GestureDetector(
-                          onTap: () =>
-                              showAlertDialog(context, collection[index]),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  width: 95,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: collection[index].color,
-                                  ),
-                                  child: Image.asset(collection[index].image),
+
+                    Image.asset("assets/pet.png"),
+                  ],
+                ),
+              ),
+              // 헤더의 높이나 다른 설정을 지정할 수 있습니다.
+              // 필요에 따라 SliverAppBar을 조정하세요.
+            ),
+            SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 24,
+                // 그리드의 각 열에 표시될 항목 수를 설정합니다.
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  // 그리드 항목을 생성하는 로직을 작성합니다.
+                  return GestureDetector(
+                    onTap: () => showAlertDialog(
+                        context, collection[index], _controller),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: 95,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: collection[index].color,
+                            ),
+                            child: Image.asset(collection[index].image),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        collection[index].name == "???"
+                            ? Image.asset(
+                                "assets/lock.png",
+                                color: gray_300,
+                                width: 8,
+                              )
+                            : Text(
+                                collection[index].name,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontFamily: 'gmarket',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  color: gray_300,
+
                                 ),
                               ),
                               const SizedBox(height: 8),
