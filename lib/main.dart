@@ -61,7 +61,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
   bool showInitDialog = false;
 
   void showInitAlertDialog(BuildContext context) {
-    showInitDialog = false;  
+    showInitDialog = false;
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -80,8 +80,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
     });
   }
 
-   @override
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -104,7 +103,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
               // changeBackgroundColor();
             },
           ),
-          if (showInitDialog) InitAlert(),
+          if (showInitDialog) bottomNavi(),
         ],
       ),
     );
