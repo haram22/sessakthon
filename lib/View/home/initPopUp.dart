@@ -41,14 +41,13 @@ class _InitAlertState extends State<InitAlert> {
     }
     if (!mounted) return;
     
-    setState(() {
-      _liveWallpaper = result;
-    });
-    Navigator.of(context).pop(); // Pop the dialog
-    Navigator.pushReplacement<void, void>(
-      context,
-      MaterialPageRoute(builder: (context) => bottomNavi()),
-    );
+    if (mounted) {
+      Navigator.of(context).pop(); // Pop the dialog
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute(builder: (context) => bottomNavi()),
+      );
+    }
   }
 
   @override
