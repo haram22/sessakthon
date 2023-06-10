@@ -5,8 +5,11 @@ import 'package:pj1/View/reward/dashBoard.dart';
 import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../collection/collectionComp.dart';
+import 'initPopUp.dart';
+
+bool isOpen = false;
 
 class bottomNavi extends StatefulWidget {
   int? selectedIndex;
@@ -28,18 +31,12 @@ class _bottomNaviState extends State<bottomNavi> {
   @override
   void initState() {
     super.initState();
+
     if (widget.selectedIndex != null) {
       _selectedIndex = widget.selectedIndex!;
       _sendCash = widget.sendCash!;
     }
   }
-
-  // static final List<Widget> _widgetOptions = <Widget>[
-  //   HomeView(),
-  //   CollectionPage(),
-  //   challengeView(),
-  //   DashBoardPage(cashPoint: _sendCash)
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +64,13 @@ class _bottomNaviState extends State<bottomNavi> {
             onTap: (int index) {
               setState(() {
                 _selectedIndex = index;
+                if (index == 1) {
+                  isOpen = true;
+                }
               });
             },
             iconSize: 28,
-            items: const [
+            items: [
               BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 3.0, top: 10),
@@ -78,14 +78,31 @@ class _bottomNaviState extends State<bottomNavi> {
                   ),
                   label: '홈'),
               BottomNavigationBarItem(
-                  icon: SizedBox(
+                label: '도감',
+                icon: badges.Badge(
+                  position: badges.BadgePosition.topStart(top: -10, start: -20),
+                  badgeStyle: badges.BadgeStyle(
+                    badgeColor: Colors.transparent,
+                    padding: EdgeInsets.all(6),
+                  ),
+                  badgeContent: Container(
+                      height: 27,
+                      width: 38,
+                      child: isOpen
+                          ? null
+                          : Image.asset(
+                              'assets/bottomIcon/New.png',
+                              fit: BoxFit.fill,
+                            )),
+                  child: SizedBox(
                     width: 30,
                     child: Padding(
                         padding: EdgeInsets.only(bottom: 3.0, top: 10),
                         child: ImageIcon(
                             AssetImage('assets/bottomIcon/unCollection.png'))),
                   ),
-                  label: '도감'),
+                ),
+              ),
               BottomNavigationBarItem(
                   icon: SizedBox(
                     width: 40,
@@ -273,7 +290,7 @@ class _HomeViewState extends State<HomeView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "분리수거 도감",
+                  "분리배출 도감",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontSize: 16,
@@ -296,6 +313,11 @@ class _HomeViewState extends State<HomeView> {
             const Spacer(),
             OutlinedButton(
                 onPressed: () {
+                  // _selectedIndex = index;
+                  // if (index == 1) {
+                  //   isOpen = true;
+                  // }
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -315,9 +337,9 @@ class _HomeViewState extends State<HomeView> {
           children: [
             _collectionPreview('햇반용기', 'assets/collection/collection1.png'),
             const SizedBox(width: 25),
-            _collectionPreview('햇반용기', 'assets/collection/collection2.png'),
+            _collectionPreview('신발', 'assets/shoe.png'),
             const SizedBox(width: 25),
-            _collectionPreview('햇반용기', 'assets/collection/collection3.png')
+            _collectionPreview('CD', 'assets/cd.png')
           ],
         )
       ]),
@@ -328,7 +350,10 @@ class _HomeViewState extends State<HomeView> {
     return Column(
       children: [
         const SizedBox(height: 17),
-        Image.asset(imagePath),
+        Image.asset(
+          imagePath,
+          width: 93,
+        ),
         const SizedBox(height: 8),
         Text(
           collectionLabel,
