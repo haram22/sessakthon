@@ -6,6 +6,7 @@ import 'package:pj1/View/reward/monthlyReward.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:badges/badges.dart' as badges;
+import '../collection/celebration.dart';
 import '../collection/collectionComp.dart';
 import 'initPopUp.dart';
 
@@ -15,7 +16,7 @@ import 'package:screen_state/screen_state.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
-  int _screenOnCount = 0;
+int _screenOnCount = 0;
 
 bool isOpen = false;
 
@@ -143,7 +144,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   final Screen _screen = Screen();
   //잠금화면 추적을 위함.
   @override
@@ -153,11 +153,10 @@ class _HomeViewState extends State<HomeView> {
       setState(() {
         if (event == ScreenStateEvent.SCREEN_ON) {
           _screenOnCount++;
-        } 
+        }
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +266,7 @@ class _HomeViewState extends State<HomeView> {
                 fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 6),
-           Text(
+          Text(
             '$_screenOnCount',
             style: TextStyle(
                 color: mainColor_green,
@@ -391,6 +390,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
 class Screen {
   EventChannel _eventChannel = const EventChannel('screenStateEvents');
   Stream<ScreenStateEvent>? _screenStateStream;

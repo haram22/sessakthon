@@ -13,7 +13,6 @@ import 'View/home/initPopUp.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -59,8 +58,8 @@ class SplashScreenGame extends StatefulWidget {
 
 class _SplashScreenGameState extends State<SplashScreenGame> {
   late FlameSplashController controller;
-  bool showInitDialog = false;  
-  
+  bool showInitDialog = false;
+
   void showInitAlertDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -69,7 +68,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
       },
     );
   }
-  
+
   void initState() {
     super.initState();
     // Start a timer to simulate the splash screen duration
@@ -79,8 +78,9 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
       });
     });
   }
+
   @override
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
