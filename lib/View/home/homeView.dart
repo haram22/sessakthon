@@ -7,6 +7,7 @@ import 'package:pj1/theme/colors.dart';
 import 'package:circle_progress_bar/circle_progress_bar.dart';
 import 'package:badges/badges.dart' as badges;
 import '../collection/collectionComp.dart';
+import 'initPopUp.dart';
 
 bool isOpen = false;
 
@@ -30,20 +31,11 @@ class _bottomNaviState extends State<bottomNavi> {
   @override
   void initState() {
     super.initState();
+
     if (widget.selectedIndex != null) {
       _selectedIndex = widget.selectedIndex!;
       _sendCash = widget.sendCash!;
     }
-    // if (widget.selectedIndex == 2) {
-    //   setState(() {
-    //     isOpen = true;
-    //     print("🌱🌱🌱🌱🌱🌱");
-    //   });
-    // }
-    // if (widget.selectedIndex == 2) {
-    //   print("🌱🌱🌱🌱🌱🌱");
-    //   isOpen = true;
-    // }
   }
 
   @override
