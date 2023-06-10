@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../Controller/liveLockScreen.dart';
 import '../../theme/colors.dart';
 import 'homeView.dart';
 import 'dart:async';
@@ -16,12 +15,18 @@ class InitAlert extends StatefulWidget {
 }
 
 class _InitAlertState extends State<InitAlert> {
-
   String _liveWallpaper = 'Unknown';
   String liveUrl =
       'https://github.com/codenameakshay/sample-data/raw/main/video3.mp4';
 
   Future<void> setLiveWallpaper() async {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => bottomNavi(),
+      ),
+    );
+
     setState(() {
       _liveWallpaper = 'Loading';
     });
@@ -41,13 +46,9 @@ class _InitAlertState extends State<InitAlert> {
     }
     if (!mounted) return;
     
-    if (mounted) {
-      Navigator.of(context).pop(); // Pop the dialog
-      Navigator.pushReplacement<void, void>(
-        context,
-        MaterialPageRoute(builder: (context) => bottomNavi()),
-      );
-    }
+    setState(() {
+      _liveWallpaper = result;
+    });
   }
 
   @override
@@ -58,22 +59,25 @@ class _InitAlertState extends State<InitAlert> {
       // height: 330,  child: Column(
       children: [
         Center(
-          child: Container(
+          child: SizedBox(
             width: double.infinity,
             height: 340,
             child: AlertDialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              titlePadding: EdgeInsets.only(left: 100, top: 30, ),
-              titleTextStyle: TextStyle(
+              titlePadding: const EdgeInsets.only(
+                left: 100,
+                top: 30,
+              ),
+              titleTextStyle: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'pretendard',
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
-              backgroundColor: Color(0xff242424),
-              title: Text(
+              backgroundColor: const Color(0xff242424),
+              title: const Text(
                 "앱 접근 권한 안내",
                 style: TextStyle(
                   color: Colors.white,
@@ -88,9 +92,9 @@ class _InitAlertState extends State<InitAlert> {
                     height: 123,
                     width: 300,
                     decoration: BoxDecoration(
-                        color: Color(0xff202020),
+                        color: const Color(0xff202020),
                         borderRadius: BorderRadius.circular(20)),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -116,8 +120,8 @@ class _InitAlertState extends State<InitAlert> {
                             style: TextStyle(
                                 fontSize: 14, fontFamily: 'pretendard')),
                         Text("허용하시겠습니까?",
-                            style:
-                                TextStyle(fontSize: 14, fontFamily: 'pretendard'))
+                            style: TextStyle(
+                                fontSize: 14, fontFamily: 'pretendard'))
                       ],
                     ),
                   )
@@ -125,7 +129,8 @@ class _InitAlertState extends State<InitAlert> {
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 10.0, left: 20, right: 20),
+                  padding:
+                      const EdgeInsets.only(bottom: 10.0, left: 20, right: 20),
                   child: Row(
                     children: [
                       Container(
@@ -138,7 +143,7 @@ class _InitAlertState extends State<InitAlert> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: gray_300,
                           ),
-                          child: Text(
+                          child: const Text(
                             "거부",
                             style: TextStyle(
                                 fontSize: 14,
@@ -148,7 +153,7 @@ class _InitAlertState extends State<InitAlert> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       Container(
                         width: 120,
                         height: 46,
@@ -161,18 +166,16 @@ class _InitAlertState extends State<InitAlert> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor_green,
                           ),
-                          child:_liveWallpaper == 'Loading'
-                      ? const CircularProgressIndicator()
-                      : const Text(
-                            "허용",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'pretendard',
-                                color: mainColor_black,
-                                fontWeight: FontWeight.bold),
-                          ),
-        
-                           
+                          child: _liveWallpaper == 'Loading'
+                              ? const CircularProgressIndicator()
+                              : const Text(
+                                  "허용",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'pretendard',
+                                      color: mainColor_black,
+                                      fontWeight: FontWeight.bold),
+                                ),
                         ),
                       ),
                     ],
@@ -190,5 +193,3 @@ class _InitAlertState extends State<InitAlert> {
     );
   }
 }
-
-
