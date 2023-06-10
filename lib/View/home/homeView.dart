@@ -9,6 +9,14 @@ import 'package:badges/badges.dart' as badges;
 import '../collection/collectionComp.dart';
 import 'initPopUp.dart';
 
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:screen_state/screen_state.dart';
+
+enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
+
+  int _screenOnCount = 0;
+
 bool isOpen = false;
 
 class bottomNavi extends StatefulWidget {
@@ -135,6 +143,22 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
+  final Screen _screen = Screen();
+  //잠금화면 추적을 위함.
+  @override
+  void initState() {
+    super.initState();
+    _screen.screenStateStream?.listen((event) {
+      setState(() {
+        if (event == ScreenStateEvent.SCREEN_ON) {
+          _screenOnCount++;
+        } 
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -243,8 +267,8 @@ class _HomeViewState extends State<HomeView> {
                 fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 6),
-          const Text(
-            "150P",
+           Text(
+            '$_screenOnCount',
             style: TextStyle(
                 color: mainColor_green,
                 fontSize: 40,
@@ -365,5 +389,34 @@ class _HomeViewState extends State<HomeView> {
         )
       ],
     );
+  }
+}
+class Screen {
+  EventChannel _eventChannel = const EventChannel('screenStateEvents');
+  Stream<ScreenStateEvent>? _screenStateStream;
+
+  Stream<ScreenStateEvent>? get screenStateStream {
+    if (Platform.isAndroid) {
+      if (_screenStateStream == null) {
+        _screenStateStream = _eventChannel
+            .receiveBroadcastStream()
+            .map((event) => _parseScreenStateEvent(event));
+      }
+      return _screenStateStream;
+    }
+    throw ScreenStateException('Exception');
+  }
+
+  ScreenStateEvent _parseScreenStateEvent(String event) {
+    switch (event) {
+      case 'android.intent.action.SCREEN_OFF':
+        return ScreenStateEvent.SCREEN_OFF;
+      case 'android.intent.action.SCREEN_ON':
+        return ScreenStateEvent.SCREEN_ON;
+      case 'android.intent.action.USER_PRESENT':
+        return ScreenStateEvent.SCREEN_UNLOCKED;
+      default:
+        throw ArgumentError('$event error');
+    }
   }
 }

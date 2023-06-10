@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../Controller/liveLockScreen.dart';
 import '../../theme/colors.dart';
 import 'homeView.dart';
+import 'dart:async';
+
+import 'package:flutter/services.dart';
+import 'package:async_wallpaper/async_wallpaper.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 class InitAlert extends StatefulWidget {
   const InitAlert({Key? key}) : super(key: key);
@@ -10,6 +16,40 @@ class InitAlert extends StatefulWidget {
 }
 
 class _InitAlertState extends State<InitAlert> {
+
+  String _liveWallpaper = 'Unknown';
+  String liveUrl =
+      'https://github.com/codenameakshay/sample-data/raw/main/video3.mp4';
+
+  Future<void> setLiveWallpaper() async {
+    setState(() {
+      _liveWallpaper = 'Loading';
+    });
+    String result;
+    var file = await DefaultCacheManager().getSingleFile(liveUrl);
+
+    try {
+      result = await AsyncWallpaper.setLiveWallpaper(
+        filePath: file.path,
+        toastDetails: ToastDetails.success(),
+        errorToastDetails: ToastDetails.error(),
+      )
+          ? 'Wallpaper set'
+          : 'Failed to get wallpaper.';
+    } on PlatformException {
+      result = 'Failed to get wallpaper.';
+    }
+    if (!mounted) return;
+
+    setState(() {
+      _liveWallpaper = result;
+    });
+    Navigator.pushReplacement<void, void>(
+      context,
+      MaterialPageRoute(builder: (context) => bottomNavi()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,7 +61,7 @@ class _InitAlertState extends State<InitAlert> {
           width: double.infinity,
           height: 340,
           child: AlertDialog(
-            titlePadding: EdgeInsets.only(left: 100, top: 30),
+            titlePadding: EdgeInsets.only(left: 100, top: 30, ),
             titleTextStyle: TextStyle(
               color: Colors.white,
               fontFamily: 'pretendard',
@@ -111,11 +151,15 @@ class _InitAlertState extends State<InitAlert> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20)),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setLiveWallpaper();
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mainColor_green,
                         ),
-                        child: Text(
+                        child:_liveWallpaper == 'Loading'
+                    ? const CircularProgressIndicator()
+                    : const Text(
                           "허용",
                           style: TextStyle(
                               fontSize: 14,
@@ -123,6 +167,8 @@ class _InitAlertState extends State<InitAlert> {
                               color: mainColor_black,
                               fontWeight: FontWeight.bold),
                         ),
+
+                         
                       ),
                     ),
                   ],
