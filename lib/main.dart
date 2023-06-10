@@ -9,7 +9,6 @@ import 'View/home/homeView.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
-
 void main() {
   runApp(MyApp());
 }
