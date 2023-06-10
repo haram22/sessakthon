@@ -20,10 +20,11 @@ class _InitAlertState extends State<InitAlert> {
   String _liveWallpaper = 'Unknown';
   String liveUrl =
       'https://github.com/codenameakshay/sample-data/raw/main/video3.mp4';
-
+  bool _isLoading = false;
   Future<void> setLiveWallpaper() async {
     setState(() {
       _liveWallpaper = 'Loading';
+      _isLoading = true;
     });
     String result;
     var file = await DefaultCacheManager().getSingleFile(liveUrl);
@@ -43,11 +44,17 @@ class _InitAlertState extends State<InitAlert> {
 
     setState(() {
       _liveWallpaper = result;
+      _isLoading = false; // Stop loading
     });
-    Navigator.pushReplacement<void, void>(
-      context,
-      MaterialPageRoute(builder: (context) => bottomNavi()),
-    );
+
+    Navigator.pop(context); // Close the alert
+
+    if (_liveWallpaper == 'Wallpaper set') {
+      Navigator.pushReplacement<void, void>(
+        context,
+        MaterialPageRoute(builder: (context) => bottomNavi()),
+      );
+    }
   }
 
   @override
