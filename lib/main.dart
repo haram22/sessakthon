@@ -4,11 +4,8 @@ import 'package:flame_splash_screen/flame_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pj1/View/home/homeView.dart';
 import 'package:pj1/theme/colors.dart';
-import 'package:screen_state/screen_state.dart';
 import 'package:flutter/services.dart';
 
-import 'Controller/unLockCount.dart';
-import 'View/home/homeView.dart';
 import 'View/home/initPopUp.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
@@ -17,15 +14,17 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashScreenGame(),
+      home: const SplashScreenGame(),
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
     );
@@ -33,6 +32,8 @@ class MyApp extends StatelessWidget {
 }
 
 class OtherScreen extends StatelessWidget {
+  const OtherScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +43,7 @@ class OtherScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push<void>(
               context,
-              MaterialPageRoute(builder: (context) => SplashScreenGame()),
+              MaterialPageRoute(builder: (context) => const SplashScreenGame()),
             );
           },
         ),
@@ -52,6 +53,8 @@ class OtherScreen extends StatelessWidget {
 }
 
 class SplashScreenGame extends StatefulWidget {
+  const SplashScreenGame({super.key});
+
   @override
   _SplashScreenGameState createState() => _SplashScreenGameState();
 }
@@ -65,15 +68,16 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return InitAlert();
+        return const InitAlert();
       },
     );
   }
 
+  @override
   void initState() {
     super.initState();
     // Start a timer to simulate the splash screen duration
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         showInitDialog = true;
       });
@@ -104,7 +108,7 @@ class _SplashScreenGameState extends State<SplashScreenGame> {
               // changeBackgroundColor();
             },
           ),
-          if (showInitDialog) InitAlert(),
+          if (showInitDialog) bottomNavi(),
         ],
       ),
     );

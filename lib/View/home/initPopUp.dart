@@ -16,8 +16,7 @@ class InitAlert extends StatefulWidget {
 
 class _InitAlertState extends State<InitAlert> {
   String _liveWallpaper = 'Unknown';
-  String liveUrl =
-      'https://github.com/codenameakshay/sample-data/raw/main/video3.mp4';
+  String liveUrl = 'https://github.com/eunoia-jason/data/raw/main/hetbahn.mp4';
 
   Future<void> setLiveWallpaper() async {
     Navigator.pushReplacement(
@@ -36,6 +35,7 @@ class _InitAlertState extends State<InitAlert> {
     try {
       result = await AsyncWallpaper.setLiveWallpaper(
         filePath: file.path,
+        goToHome: false,
         toastDetails: ToastDetails.success(),
         errorToastDetails: ToastDetails.error(),
       )
@@ -139,7 +139,9 @@ class _InitAlertState extends State<InitAlert> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20)),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: gray_300,
                           ),

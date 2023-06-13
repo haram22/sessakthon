@@ -4,8 +4,6 @@ import 'package:video_player/video_player.dart';
 
 import '../../Model/collectionData.dart';
 import '../../theme/colors.dart';
-import '../home/homeView.dart';
-import 'celebration.dart';
 import 'collectionDetail.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -24,7 +22,8 @@ class _CollectionPageState extends State<CollectionPage> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/video/hetbahn.mp4');
+    _controller = VideoPlayerController.network(
+        'https://github.com/eunoia-jason/data/raw/main/hetbahn.mp4');
 
     _controller.addListener(() {
       setState(() {});
@@ -34,7 +33,7 @@ class _CollectionPageState extends State<CollectionPage> {
     _controller.play();
 
     if (!isDialogShown) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         showCelebrationDialog(context, collection[0]);
         setState(() {
           isDialogShown = true;
@@ -56,7 +55,7 @@ class _CollectionPageState extends State<CollectionPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: 500,
           child: AlertDialog(
             backgroundColor: const Color(0xff242424),
@@ -105,8 +104,8 @@ class _CollectionPageState extends State<CollectionPage> {
                       ),
                     ),
                     const SizedBox(height: 300),
-                    Center(
-                      child: const Text(
+                    const Center(
+                      child: Text(
                         "페트병",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -174,7 +173,7 @@ class _CollectionPageState extends State<CollectionPage> {
               Padding(
                 padding:
                     const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
-                child: Container(
+                child: SizedBox(
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
