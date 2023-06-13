@@ -227,7 +227,7 @@ class _HomeViewState extends State<HomeView> {
             strokeWidth: 14,
             foregroundColor: mainColor_green,
             backgroundColor: const Color(0xff1E1E1E),
-            value: -0.7,
+            value: _screenOnCount*(-0.005),
             child: _contentsCircle(),
           ),
         ),
