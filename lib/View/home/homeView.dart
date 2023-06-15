@@ -16,21 +16,21 @@ import 'package:screen_state/screen_state.dart';
 
 enum ScreenStateEvent { SCREEN_UNLOCKED, SCREEN_ON, SCREEN_OFF }
 
-int _screenOnCount = 0;
+int _screenOnCount = 9850;
 
 bool isOpen = false;
 
 class bottomNavi extends StatefulWidget {
   int? selectedIndex;
-  String? sendCash;
+  int? sendCash;
   bottomNavi({super.key, this.selectedIndex, this.sendCash});
   @override
   State<bottomNavi> createState() => _bottomNaviState();
 }
 
 class _bottomNaviState extends State<bottomNavi> {
-  late String _sendCash = "18,980";
   int _selectedIndex = 0;
+
   late List<bool> ispress;
   bool ispress1 = true;
   bool ispress2 = true;
@@ -43,17 +43,18 @@ class _bottomNaviState extends State<bottomNavi> {
 
     if (widget.selectedIndex != null) {
       _selectedIndex = widget.selectedIndex!;
-      _sendCash = widget.sendCash!;
+      _screenOnCount = widget.sendCash!;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    int initValue = 147;
     List<Widget> _widgetOptions = <Widget>[
       HomeView(),
       CollectionPage(),
       challengeView(),
-      DashBoardPage(cashPoint: _sendCash)
+      DashBoardPage(cashPoint: _screenOnCount)
     ];
 
     return Scaffold(
@@ -227,7 +228,7 @@ class _HomeViewState extends State<HomeView> {
             strokeWidth: 14,
             foregroundColor: mainColor_green,
             backgroundColor: const Color(0xff1E1E1E),
-            value: _screenOnCount*(-0.005),
+            value: _screenOnCount != 0 ? 147.floor() / 200.floor() : 0,
             child: _contentsCircle(),
           ),
         ),
@@ -266,14 +267,23 @@ class _HomeViewState extends State<HomeView> {
                 fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 6),
-          Text(
-            '$_screenOnCount',
-            style: TextStyle(
-                color: mainColor_green,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'gmarket'),
-          ),
+          _screenOnCount == 0
+              ? Text(
+                  '$_screenOnCount',
+                  style: TextStyle(
+                      color: mainColor_green,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'gmarket'),
+                )
+              : Text(
+                  '147',
+                  style: TextStyle(
+                      color: mainColor_green,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'gmarket'),
+                ),
           const SizedBox(height: 19),
           SizedBox(
             height: 24,

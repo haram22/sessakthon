@@ -5,7 +5,7 @@ import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 
 class DashBoardPage extends StatefulWidget {
-  String? cashPoint;
+  int? cashPoint;
   final Key? key;
   DashBoardPage({this.key, this.cashPoint});
 
@@ -15,7 +15,7 @@ class DashBoardPage extends StatefulWidget {
 
 class _DashBoardPageState extends State<DashBoardPage> {
   @override
-  String _cashPoint = "";
+  int _cashPoint = 0;
   void initState() {
     super.initState();
     if (widget.cashPoint != null) {
@@ -93,7 +93,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                       Image.asset("assets/point.png"),
                       SizedBox(width: 8),
                       Text(
-                        _cashPoint,
+                        "${_cashPoint}",
+                        // "test",
                         style: TextStyle(
                           color: mainColor_green,
                           fontSize: 40,
@@ -118,7 +119,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             onPressed: () => Navigator.push(
                               context,
                               ModalBottomSheetRoute(
-                                builder: (context) => const CashBack(),
+                                builder: (context) => CashBack(
+                                  sendCash: _cashPoint,
+                                ),
                                 isScrollControlled: false,
                               ),
                             ),
@@ -189,7 +192,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             const MonthlyReward(),
           ],
         ),

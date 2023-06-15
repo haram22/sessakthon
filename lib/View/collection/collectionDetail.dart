@@ -91,6 +91,7 @@ void showAlertDialog(BuildContext context, CollectionItem item,
                               "즉석밥 용기에 쓰이는 플라스틱 OTHER는\n내열성을 높이기 위해 여러 재질을 혼합한 복합\n플라스틱으로 제품 종류별로 수거해 별도의\n재활용 공정을 거치지 않는 이상 재활용이 불가능해요.\n그래서 재활용장에서 선별되지 못하고 대부분\n일반쓰레기로 폐기(소각 또는 매립)된다고 합니다.",
                               style: subtitle1(),
                             ),
+                            SizedBox(height: 40)
                           ],
                         )
                       : const SizedBox(height: 115),
@@ -98,32 +99,42 @@ void showAlertDialog(BuildContext context, CollectionItem item,
               ),
             ),
             Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
-                      left: 20,
-                    ),
-                    child: GestureDetector(
-                      child: const Icon(Icons.close_rounded),
-                      onTap: () => Navigator.pop(context),
-                    ),
-                  ),
+              padding: const EdgeInsets.only(
+                top: 20,
+                left: 20,
+              ),
+              child: GestureDetector(
+                child: const Icon(Icons.close_rounded),
+                onTap: () => Navigator.pop(context),
+              ),
+            ),
           ],
         ),
         actions: [
           Stack(
             children: [
-              ElevatedButton(
-                onPressed: item.isCollected ? () {} : null,
-                style:
-                    ElevatedButton.styleFrom(backgroundColor: mainColor_green),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "친구에게 공유하고 리워드 받기",
-                      style: button(color: mainColor_black),
+              Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 10),
+                child: Container(
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: item.isCollected ? () {} : null,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: mainColor_green),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "친구에게 공유하고 리워드 받기",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'gmarket',
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
               item.isCollected

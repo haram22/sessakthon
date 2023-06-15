@@ -227,35 +227,35 @@ class challengeDetail extends StatelessWidget {
         SizedBox(height: 21),
         //////////////////////////////////////////////
         Row(
-  mainAxisAlignment: MainAxisAlignment.end,
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    TextButton(
-      onPressed: () {},
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(width: 195), 
-          Text(
-            challengeInfo['reviewNum'] + "개 후기 모두 보기",
-            style: TextStyle(
-              color: mainColor_white,
-              fontWeight: FontWeight.w400,
-              fontSize: 12,
-              fontFamily: 'pretendard',
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(width: 195),
+                  Text(
+                    challengeInfo['reviewNum'] + "개 후기 모두 보기",
+                    style: TextStyle(
+                      color: mainColor_white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      fontFamily: 'pretendard',
+                    ),
+                  ),
+                  SizedBox(
+                      width: 8), // Adjust the spacing between the text and icon
+                  Icon(
+                    Icons.chevron_right,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(width: 8), // Adjust the spacing between the text and icon
-          Icon(
-            Icons.chevron_right,
-            color: Colors.white,
-          ),
-
-        ],
-      ),
-    ),
-  ],
-),
+          ],
+        ),
 //////////////////////////////////
         SizedBox(height: 33),
       ],
@@ -378,7 +378,10 @@ class challengeDetail extends StatelessWidget {
     int imgIndex = index + 1;
     return Column(
       children: [
-        Image.asset('assets/challengeDetail/prove$imgIndex.png'),
+        Image.asset(
+          'assets/challengeDetail/prove$imgIndex.png',
+          width: 163,
+        ),
         SizedBox(height: 5),
         Container(
             width: 160,

@@ -169,7 +169,7 @@ class _cameraReceiptState extends State<cameraReceipt> {
                 MaterialPageRoute(
                     builder: (context) => bottomNavi(
                           selectedIndex: 3,
-                          sendCash: "0",
+                          sendCash: 0,
                         )));
             final snackBar = SnackBar(
               backgroundColor: gray_600,

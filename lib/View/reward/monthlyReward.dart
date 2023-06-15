@@ -115,6 +115,7 @@ class EntireMonthlyReward extends StatelessWidget {
                           style: const TextStyle(
                             color: gray_300,
                             fontSize: 10,
+                            height: 1.3,
                             fontFamily: "gmarket",
                           ),
                         ),
