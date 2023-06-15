@@ -378,7 +378,10 @@ class challengeDetail extends StatelessWidget {
     int imgIndex = index + 1;
     return Column(
       children: [
-        Image.asset('assets/challengeDetail/prove$imgIndex.png'),
+        Image.asset(
+          'assets/challengeDetail/prove$imgIndex.png',
+          width: 163,
+        ),
         SizedBox(height: 5),
         Container(
             width: 160,
