@@ -22,14 +22,14 @@ bool isOpen = false;
 
 class bottomNavi extends StatefulWidget {
   int? selectedIndex;
-  String? sendCash;
+  int? sendCash;
   bottomNavi({super.key, this.selectedIndex, this.sendCash});
   @override
   State<bottomNavi> createState() => _bottomNaviState();
 }
 
 class _bottomNaviState extends State<bottomNavi> {
-  late String _sendCash = "18,980";
+  // late int _sendCash = 18980;
   int _selectedIndex = 0;
   late List<bool> ispress;
   bool ispress1 = true;
@@ -43,7 +43,7 @@ class _bottomNaviState extends State<bottomNavi> {
 
     if (widget.selectedIndex != null) {
       _selectedIndex = widget.selectedIndex!;
-      _sendCash = widget.sendCash!;
+      _screenOnCount = widget.sendCash!;
     }
   }
 
@@ -53,7 +53,7 @@ class _bottomNaviState extends State<bottomNavi> {
       HomeView(),
       CollectionPage(),
       challengeView(),
-      DashBoardPage(cashPoint: _sendCash)
+      DashBoardPage(cashPoint: _screenOnCount)
     ];
 
     return Scaffold(
@@ -227,7 +227,7 @@ class _HomeViewState extends State<HomeView> {
             strokeWidth: 14,
             foregroundColor: mainColor_green,
             backgroundColor: const Color(0xff1E1E1E),
-            value: _screenOnCount*(-0.005),
+            value: _screenOnCount * (-0.005),
             child: _contentsCircle(),
           ),
         ),

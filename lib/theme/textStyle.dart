@@ -14,6 +14,7 @@ TextStyle subtitle1({bool responsible = false, Color? color}) {
       fontSize: responsible ? 12.sp : 12,
       fontWeight: FontWeight.normal,
       fontFamily: 'pretendard',
+      height: 1.5,
       color: color);
 }
 

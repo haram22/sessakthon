@@ -7,7 +7,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "햇반X오지지",
     "desription": "오늘부터 시작",
     "length": "2주동안",
-    "participant" : "322",
+    "participant": "322",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -30,10 +30,7 @@ final List<Map<String, dynamic>> challengeData = [
     "date": "6.5 (월) -6.11 (일)\n매일, 기타",
     "url": "https://cjhetbahn-event.co.kr/pc/",
     "userReview": [
-      {
-        "starRate": "⭐️⭐️⭐️⭐️⭐️",
-        "comment": "환경에 이제 막 관심을 가지게 되었는데 함께하니 더 의미있네요!"
-      },
+      {"starRate": "⭐️⭐️⭐️⭐️⭐️", "comment": "함께하니 더 의미있네요!"},
       {"starRate": "⭐️⭐️⭐️⭐️⭐️", "comment": "평소에 하고 있어서 어려움은 없었어요~"},
     ]
   },
@@ -43,7 +40,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "한국야쿠르트x오지지",
     "desription": "어제부터 시작",
     "length": "2주동안",
-    "participant" : "19",
+    "participant": "19",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -79,7 +76,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "닥터지x오지지",
     "desription": "6/1부터 시작",
     "length": "4주동안",
-    "participant" : "312",
+    "participant": "312",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -115,7 +112,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "글라스락x오지지",
     "desription": "내일부터 시작",
     "length": "3주동안",
-    "participant" : "122",
+    "participant": "122",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -151,7 +148,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "바나나맛우유x오지지",
     "desription": "오늘부터 시작",
     "length": "1주동안",
-    "participant" : "55",
+    "participant": "55",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",
@@ -187,7 +184,7 @@ final List<Map<String, dynamic>> challengeData = [
     "organization": "포카리스웨트x오지지",
     "desription": "7/1부터 시작",
     "length": "5주동안",
-    "participant" : "7",
+    "participant": "7",
 
     ///
     "backImg": "assets/challenge/challengeComp1.png",

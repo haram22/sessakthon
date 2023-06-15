@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pj1/theme/textStyle.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../Controller/secondInit.dart';
 import '../../Model/collectionData.dart';
 import '../../theme/colors.dart';
+import '../home/homeView.dart';
+import '../home/initPopUp.dart';
+import 'celebration.dart';
 import 'collectionDetail.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -17,13 +21,11 @@ bool isDialogShown = false;
 
 class _CollectionPageState extends State<CollectionPage> {
   late VideoPlayerController _controller;
-  // Flag to track if the dialog has been shown
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        'https://github.com/eunoia-jason/data/raw/main/hetbahn.mp4');
+    _controller = VideoPlayerController.asset('assets/video/hetbahn.mp4');
 
     _controller.addListener(() {
       setState(() {});
@@ -33,7 +35,7 @@ class _CollectionPageState extends State<CollectionPage> {
     _controller.play();
 
     if (!isDialogShown) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
         showCelebrationDialog(context, collection[0]);
         setState(() {
           isDialogShown = true;
@@ -55,7 +57,7 @@ class _CollectionPageState extends State<CollectionPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return SizedBox(
+        return Container(
           height: 500,
           child: AlertDialog(
             backgroundColor: const Color(0xff242424),
@@ -65,7 +67,7 @@ class _CollectionPageState extends State<CollectionPage> {
                   child: const Icon(Icons.close_rounded),
                   onTap: () => Navigator.pop(context),
                 ),
-                const SizedBox(width: 55),
+                const SizedBox(width: 65),
                 Image.asset(
                   "assets/splashLogo.png",
                   width: 100,
@@ -104,8 +106,8 @@ class _CollectionPageState extends State<CollectionPage> {
                       ),
                     ),
                     const SizedBox(height: 300),
-                    const Center(
-                      child: Text(
+                    Center(
+                      child: const Text(
                         "페트병",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -157,8 +159,8 @@ class _CollectionPageState extends State<CollectionPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 100.0,
-                    top: 200,
+                    left: 110.0,
+                    top: 230,
                   ),
                   child: Transform.scale(
                     scale: 1.2,
@@ -173,11 +175,15 @@ class _CollectionPageState extends State<CollectionPage> {
               Padding(
                 padding:
                     const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
-                child: SizedBox(
+                child: Container(
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InitAlert2()));
                       setState(() {
                         isDialogShown = true;
                       });

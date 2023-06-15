@@ -1,10 +1,13 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:pj1/View/reward/Receipt.dart';
 import 'package:pj1/theme/colors.dart';
 import 'package:pj1/theme/textStyle.dart';
 
 class CashBack extends StatelessWidget {
-  const CashBack({super.key});
+  int? sendCash;
+  CashBack({super.key, this.sendCash});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class CashBack extends StatelessWidget {
             const SizedBox(height: 23),
             Text.rich(
               TextSpan(
-                text: "1,898원",
+                text: "${this.sendCash}",
                 style: title1(color: mainColor_green),
                 children: [
                   TextSpan(
@@ -50,7 +53,7 @@ class CashBack extends StatelessWidget {
               "잔여 포인트 : 0",
               style: subtitle1(color: gray_300),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 35),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
@@ -68,7 +71,10 @@ class CashBack extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                     child: Text(
                       "확인",
-                      style: button(color: mainColor_black),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontFamily: 'gmarket'),
                     ),
                   ),
                 ],
