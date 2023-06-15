@@ -11,6 +11,7 @@ class CashBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late double cashmoney = sendCash! / 10;
     return Scaffold(
       backgroundColor: mainColor_black,
       body: Padding(
@@ -36,7 +37,7 @@ class CashBack extends StatelessWidget {
             const SizedBox(height: 23),
             Text.rich(
               TextSpan(
-                text: "${this.sendCash}",
+                text: "${cashmoney.floor()}원",
                 style: title1(color: mainColor_green),
                 children: [
                   TextSpan(
